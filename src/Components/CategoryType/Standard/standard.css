@@ -1,0 +1,9 @@
+.standard{
+    background-image: url(../../../Asset/Backgound/categoryBg.png);
+    height: 200px;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
