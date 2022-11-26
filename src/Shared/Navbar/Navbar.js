@@ -14,9 +14,8 @@ const Navbar = () => {
   // const [openMenu, setOpenMenu] = useState(true);
   const [openDashBoard, setOpenDashboard] = useState(false);
   const { user, LogOut, logout } = useContext(authContext);
-  const [darkLight, setDarkLight] = useState(false);
   
-console.log(user)
+// console.log(user)
   const LogOUT =()=>{
     logout()
     .then(()=>{})

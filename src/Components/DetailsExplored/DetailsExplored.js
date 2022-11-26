@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
@@ -20,11 +20,15 @@ import { useNavigate } from "react-router-dom";
 
 const DetailsExplored = ({ detailsExplored }) => {
   const {user} = useContext(authContext)
-  console.log(user)
-  const { SellerName, bikeName, brandName, date, image, location, marketPrice, resellPrice, used } =
+  // console.log(user)
+  const [close, setClose] = useState(true);
+  const navigate = useNavigate()
+  
+  const { SellerName, bikeName, brandName, date, _id, image, location, marketPrice, resellPrice, used } =
     detailsExplored.BikeDetails;
+    // console.log(detailsExplored.BikeDetails)
 
-    const navigate = useNavigate()
+   
   // handlingBooking for order
   const handlingBooking = (event) => {
     event.preventDefault();
@@ -37,7 +41,40 @@ const DetailsExplored = ({ detailsExplored }) => {
     const location = form.location.value;
     const number = form.number.value;
 
-    console.log("name", name,"email", email,"price", price,"bikeName", bikeName, "location", location, "number",number);
+    const orderByBookingInfo = {
+      customerName: name,
+      customerEmail: email,
+      priceFixed: price,
+      bikeName: bikeName,
+      receivedLocation: location,
+      customerNumber: number,
+      productId: _id
+    }
+    console.log(orderByBookingInfo)
+
+    //saving data for order in database
+    const url = 'http://localhost:5000/booked';
+    fetch(url, {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json',
+        authorization: `bikerToken ${localStorage.setItem("bikerToken", user.email)}`
+      },
+      body: JSON.stringify(orderByBookingInfo)
+    })
+    .then(res => res.json())
+    .then(data =>{
+      if(data.acknowledged){
+        toast.success('Successfully booked')
+      }
+    })
+
+    setClose(false)
+
+
+
+
+    // console.log("name", name,"email", email,"price", price,"bikeName", bikeName, "location", location, "number",number);
   };
 
 
@@ -45,8 +82,13 @@ const DetailsExplored = ({ detailsExplored }) => {
   const alertForLogin =()=>{
     
  
-    window.confirm("If You want to booking a order you have to login first, are sure?")
-    navigate('/login')
+   const confirm = window.confirm("If You want to booking a order you have to login first, are sure?")
+    if(confirm){
+      navigate('/login')
+    }else{
+      return
+    }
+   
     // toast.message("If You want to booking a order you have to login first")
     // return 
   }
@@ -219,6 +261,7 @@ const DetailsExplored = ({ detailsExplored }) => {
                   <button className="block w-full p-3 bg-green-600 text-white text-center rounded-sm dark:text-gray-900 dark:bg-violet-400">
                     Submit
                   </button>
+                  <label  htmlFor="bookNow" className="btn btn-sm w-96 mb-6 bg-red-800 py-4 absolute ">Close</label>
                 </form>
               </div>
             </label>
