@@ -25,12 +25,12 @@ const Navbar = () => {
   const dashboardMenu = (
     <React.Fragment className="flex items-center">
       <li className="flex items-center p-3">
-        <Link onClick={()=> setOpenMenu(!openMenu)} to="/DashBoard" className="flex items-center">
+        <Link onClick={()=> setOpenMenu(!openMenu)} to="/Dashboard" className="flex items-center">
           {" "}
           <FaUserAlt /> View Profile
         </Link>
       </li>
-      <li className="flex p-3 bg-red-700 items-center">
+      <li onClick={LogOUT} className="flex p-3 bg-red-700 items-center">
         <Link onClick={()=> setOpenMenu(!openMenu)} className="flex items-center text-white">
           {" "}
           <FaSignOutAlt />
@@ -57,10 +57,16 @@ const Navbar = () => {
         </Link>
       </li>
       <li className=" p-3" onClick={() => setOpenMenu(!openMenu)}>
+        <Link className=" text-xl" to="/MyOrder">
+          My Order
+        </Link>
+      </li>
+      <li className=" p-3" onClick={() => setOpenMenu(!openMenu)}>
         <Link className=" text-xl" to="/Blog">
           Blog
         </Link>
       </li>
+      
       {user?.uid ? (
         <>
           <li className=" p-3 bg-red-700 rounded" onClick={LogOUT}>

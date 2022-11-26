@@ -1,16 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import AuthContext from './Context/AuthContext/AuthContext';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import AuthContext from "./Context/AuthContext/AuthContext";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+// Create a client
+const queryClient = new QueryClient();
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-   <AuthContext>
-   <App />
-   </AuthContext>
+    <QueryClientProvider client={queryClient}>
+      <AuthContext>
+        <App />
+      </AuthContext>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 

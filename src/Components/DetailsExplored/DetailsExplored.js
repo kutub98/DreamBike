@@ -24,6 +24,7 @@ const DetailsExplored = ({ detailsExplored }) => {
   const [close, setClose] = useState(true);
   const navigate = useNavigate()
   
+  
   const { SellerName, bikeName, brandName, date, _id, image, location, marketPrice, resellPrice, used } =
     detailsExplored.BikeDetails;
     // console.log(detailsExplored.BikeDetails)
@@ -48,10 +49,14 @@ const DetailsExplored = ({ detailsExplored }) => {
       bikeName: bikeName,
       receivedLocation: location,
       customerNumber: number,
-      productId: _id
+      productId: _id,
+      productImag: image
     }
     console.log(orderByBookingInfo)
 
+    if(user?.email && _id ){
+      return toast.error("Sorry You All ready booked it")
+    }
     //saving data for order in database
     const url = 'http://localhost:5000/booked';
     fetch(url, {
@@ -261,7 +266,7 @@ const DetailsExplored = ({ detailsExplored }) => {
                   <button className="block w-full p-3 bg-green-600 text-white text-center rounded-sm dark:text-gray-900 dark:bg-violet-400">
                     Submit
                   </button>
-                  <label  htmlFor="bookNow" className="btn btn-sm w-96 mb-6 bg-red-800 py-4 absolute ">Close</label>
+                  <label  htmlFor="bookNow" className="btn btn-sm w-96 mb-6 bg-red-600 py-4 absolute ">Close</label>
                 </form>
               </div>
             </label>
