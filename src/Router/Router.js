@@ -12,7 +12,12 @@ import MyOrder from "../Components/MyOrder/MyOrder";
 import Login from "../Components/Page/Login/Login";
 import Register from "../Components/Page/Register/Register";
 import AddProduct from "../Dashboard/AddProduct/AddProduct";
+import AllBuyers from "../Dashboard/AllBuyers/AllBuyers";
+import AllSeller from "../Dashboard/AllSeller/AllSeller";
+import AllUsers from "../Dashboard/AllUsers/AllUsers";
 import DashLayout from "../Dashboard/DashboardLayout/DashLayout";
+import MyProduct from "../Dashboard/MyProduct/MyProduct";
+import ReportedItems from "../Dashboard/ReportedItems/ReportedItems";
 import MainLayout from "../Layout/MainLayout/MainLayout";
 import Error from "../Shared/Error/Error";
 
@@ -44,6 +49,12 @@ const Router = () => {
       children: [
         {path: '/Dashboard', element: <MyOrder></MyOrder>},
         {path: '/Dashboard/AddProduct', element: <AddProduct></AddProduct>},
+        {path: '/Dashboard/MyProduct', element: <MyProduct></MyProduct>},
+        {path: '/Dashboard/Reported', element: <ReportedItems></ReportedItems>},
+        {path: '/Dashboard/AllUsers', element: <AllUsers></AllUsers>},
+        {path: '/Dashboard/AllSeller', element: <AllSeller></AllSeller>},
+        {path: '/Dashboard/AllBuyers', element: <AllBuyers></AllBuyers>},
+        
       ]
     }
 

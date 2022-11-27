@@ -8,7 +8,7 @@ const SingleOrdeCmp = ({singOrder , refetch}) => {
        
             <tr className="border-b border-opacity-20 border-gray-300 bg-gray-50">
                 <td className="text-center">
-                  <p> {idx}</p>
+                  <p className='text-black'>{idx}</p>
                 </td>
                 <td className="text-center">
                   <div className="avatar">

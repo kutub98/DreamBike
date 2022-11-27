@@ -1,0 +1,23 @@
+[
+    {
+      "CategoriesName": "Standard Bike",
+      "image": "https://i.ibb.co/S3fx6Zc/Standard.png",
+      "serviceId": "01"
+    },
+    {
+      "CategoriesName": "Cruiser Bike",
+      "image": "https://i.ibb.co/GHv8p0h/CRUSURE.png",
+      "serviceId": "02"
+    },
+    {
+      "CategoriesName": "Dual Purpose Bike",
+      "image": "https://i.ibb.co/QCW7SJh/Dual.png",
+      "serviceId": "03"
+    },
+    {
+      "CategoriesName":"Sports Bike",
+      "image":"https://i.ibb.co/wKsq1wr/Sports-Bike.png",
+      "serviceId":"04"
+   
+   }
+  ]

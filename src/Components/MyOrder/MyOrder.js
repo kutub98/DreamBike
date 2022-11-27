@@ -1,11 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { json } from "react-router-dom";
 import { authContext } from "../../Context/AuthContext/AuthContext";
 import SingleOrdeCmp from "./SingleOrderComponetnt/SingleOrdeCmp";
 
 const MyOrder = () => {
     const {user} = useContext(authContext)
+    const [Already, setAlread] = useState()
 
+    useEffect((email)=> {
+      fetch(`http://localhost:5000/ordered/${email}`)
+      .then(data => data.json())
+      .then(res => setAlread(res))
+    }, [])
+
+    console.log(Already)
     const {data: ordered =[], isLoading}= useQuery({
         queryKey: ['orderd', user?.email],
         queryFn : async()=>{
@@ -14,12 +23,12 @@ const MyOrder = () => {
           return data;
         }
       })
-      console.log(ordered)
-      let idx = 1;
+      
+    
   return (
     <div>
       <div className="container p-2 mx-auto sm:p-4 text-gray-800">
-        <h2 className="mb-4 text-2xl font-semibold leading-tight">Invoices</h2>
+        <h2 className="mb-4 text-2xl font-semibold leading-tight">My Orders</h2>
         <div className="overflow-x-auto">
           <table className="min-w-full text-xs">
             <thead className="bg-gray-300">
@@ -36,7 +45,7 @@ const MyOrder = () => {
             </thead>
             <tbody>
               {
-                ordered.map(singOrder  => <SingleOrdeCmp key={singOrder._id} singOrder={singOrder} idx={ idx+ 1} ></SingleOrdeCmp>)
+                ordered.map((singOrder, idx)  => <SingleOrdeCmp key={singOrder._id} singOrder={singOrder} idx={idx+1} ></SingleOrdeCmp>)
               }
               
             </tbody>

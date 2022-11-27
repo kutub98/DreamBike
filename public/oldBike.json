@@ -1,0 +1,77 @@
+[
+    {
+        "CategoriesName": "Dual Purpose Bike",
+        "serviceId": "03",
+        "BikeDetails": 
+          {
+            "bikeName": "SUJUKI DR",
+            "brandName":"Sujuki",
+            "location": "Chittagong",
+            "resellPrice": "120000",
+            "marketPrice": "170000",
+            "used": " 2 months",
+            "image": "https://di-uploads-pod30.dealerinspire.com/ridenow/uploads/2021/04/Kawasaki-KLR-650.jpg"
+          }
+        
+      },
+      {
+        "CategoriesName": "Dual Purpose Bike",
+        "serviceId": "03",
+        "BikeDetails": 
+          {
+            "bikeName": "SUJUKI DR",
+            "brandName":"Sujuki",
+            "location": "Chittagong",
+            "resellPrice": "120000",
+            "marketPrice": "170000",
+            "used": " 2 months",
+            "image": "https://di-uploads-pod30.dealerinspire.com/ridenow/uploads/2021/04/2018-Honda-CRF250L2-1024x768.jpg"
+          }
+      
+      },
+      {
+        "CategoriesName": "Sports Bike",
+        "serviceId": "04",
+        "BikeDetails": 
+          {
+            "bikeName": "BRABUS 1300",
+            "brandName":"BRABUS",
+            "location": "Chittagong",
+            "resellPrice": "120000",
+            "marketPrice": "170000",
+            "used": " 2 months",
+            "image": "https://ultimatemotorcycling.com/wp-content/uploads/2022/02/brabus-1300-r-first-look-ktm-1290-super-duke-r-evo-upright-sportbike-6.jpg"
+          }
+        
+      },
+      {
+        "CategoriesName": "Sports Bike",
+        "serviceId": "04",
+        "BikeDetails": 
+          {
+            "bikeName": "BRABUS 1300",
+            "brandName":"BRABUS",
+            "location": "Chittagong",
+            "resellPrice": "120000",
+            "marketPrice": "170000",
+            "used": " 2 months",
+            "image": "https://ultimatemotorcycling.com/wp-content/uploads/2022/02/brabus-1300-r-first-look-ktm-1290-super-duke-r-evo-upright-sportbike-9.jpg"
+          }
+        
+      },
+      {
+        "CategoriesName": "Cruiser Bike",
+        "serviceId": "02",
+        "BikeDetails": 
+          {
+            "bikeName": "Cruiser Bike",
+            "brandName":"QJ Motor SRV 300",
+            "location": "Chittagong",
+            "resellPrice": "120000",
+            "marketPrice": "170000",
+            "used": " 2 months",
+            "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/129571/v302c-right-front-three-quarter.gif?isig=0"
+          }
+        
+      }
+]

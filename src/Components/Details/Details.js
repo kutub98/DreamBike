@@ -8,11 +8,11 @@ const Details = ({ details }) => {
       <div className="my-10 ">
         <div className="card bg-base-100 shadow-xl">
           <figure>
-            <img src={details.BikeDetails.image} alt="Shoes" className="w-full h-56" />
+            <img src={details.image} alt="Shoes" className="w-full h-56" />
           </figure>
           <div className="card-body">
             <h2 className="card-title">
-              {details.BikeDetails.bikeName}
+              {details.bikeName}
               <div className="badge badge-secondary">NEW</div>
             </h2>
             <p>If a dog chews shoes whose shoes does he choose?</p>

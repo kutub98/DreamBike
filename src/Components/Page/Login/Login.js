@@ -53,6 +53,7 @@ const Login = () => {
   const githubHandler = ()=>{
     loginWithGitHub()
     .then((result)=> {
+      
         console.log(result)
         toast.success('Welcome to Your Dream Bike')
         navigate(from, {replace: true})

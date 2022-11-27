@@ -18,16 +18,16 @@ import {
 import { authContext } from "../../Context/AuthContext/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-const DetailsExplored = ({ detailsExplored }) => {
+const DetailsExplored = ({ detailsExplored, Already }) => {
   const {user} = useContext(authContext)
   // console.log(user)
   const [close, setClose] = useState(true);
   const navigate = useNavigate()
   
-  
+  console.log(Already)
   const { SellerName, bikeName, brandName, date, _id, image, location, marketPrice, resellPrice, used } =
-    detailsExplored.BikeDetails;
-    // console.log(detailsExplored.BikeDetails)
+    detailsExplored;
+    console.log(detailsExplored)
 
    
   // handlingBooking for order
@@ -54,8 +54,26 @@ const DetailsExplored = ({ detailsExplored }) => {
     }
     console.log(orderByBookingInfo)
 
-    if(user?.email && _id ){
+    if(_id){
       return toast.error("Sorry You All ready booked it")
+    }else{
+      const url = 'http://localhost:5000/booked';
+    fetch(url, {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json',
+        authorization: `bikerToken ${localStorage.setItem("bikerToken", user.email)}`
+      },
+      body: JSON.stringify(orderByBookingInfo)
+    })
+    .then(res => res.json())
+    .then(data =>{
+      if(data.acknowledged){
+        toast.success('Successfully booked')
+      }
+    })
+
+    setClose(false)
     }
     //saving data for order in database
     const url = 'http://localhost:5000/booked';

@@ -3,7 +3,7 @@
     "CategoryName": "Standard Bike",
     "serviceId": "01",
     "_category_id": "prd01a",
-    "BikeDetails": {
+   
       "bikeName": "Discover",
       "brandName": "Bajaj",
       "location": "Chittagong",
@@ -13,14 +13,13 @@
       "SellerName": "",
       "used": " 2 months",
       "image": "https://www.motorbeam.com/wp-content/uploads/2015-Bajaj-Discover-1200x900.jpg"
-    }
-  },
+    },
   {
     "CategoryName": "Standard Bike",
     "serviceId": "01",
     "_category_id": "prd02b",
 
-    "BikeDetails": {
+   
       "bikeName": "pulsar",
       "brandName": "Bajaj",
       "location": "Chittagong",
@@ -30,14 +29,13 @@
       "SellerName": "",
       "used": " 2 months",
       "image": "https://images.hindustantimes.com/auto/img/2021/07/16/600x338/bajaj-pulsar-125-front0_-_Copy_1592465618551_1592465628439_1626422381835.jpg"
-    }
-  },
+    },
   {
     "CategoryName": "Dual Purpose Bike",
     "serviceId": "03",
     "_category_id": "prd03c",
 
-    "BikeDetails": {
+   
       "bikeName": "SUJUKI DR",
       "brandName": "Sujuki",
       "location": "Chittagong",
@@ -47,14 +45,13 @@
       "SellerName": "",
       "used": " 2 months",
       "image": "https://di-uploads-pod30.dealerinspire.com/ridenow/uploads/2021/04/Kawasaki-KLR-650.jpg"
-    }
-  },
+    },
   {
     "CategoryName": "Dual Purpose Bike",
     "serviceId": "03",
     "_category_id": "prd04d",
 
-    "BikeDetails": {
+   
       "bikeName": "SUJUKI DR",
       "brandName": "Sujuki",
       "location": "Chittagong",
@@ -64,13 +61,12 @@
       "SellerName": "",
       "used": " 2 months",
       "image": "https://di-uploads-pod30.dealerinspire.com/ridenow/uploads/2021/04/2018-Honda-CRF250L2-1024x768.jpg"
-    }
-  },
+    },
   {
     "CategoryName": "Sports Bike",
     "serviceId": "04",
     "_category_id": "prd05e",
-    "BikeDetails": {
+   
       "bikeName": "BRABUS cd1300",
       "brandName": "BRABUS",
       "location": "Chittagong",
@@ -80,14 +76,13 @@
       "SellerName": "",
       "used": " 2 months",
       "image": "https://ultimatemotorcycling.com/wp-content/uploads/2022/02/brabus-1300-r-first-look-ktm-1290-super-duke-r-evo-upright-sportbike-6.jpg"
-    }
-  },
+    },
   {
     "CategoryName": "Sports Bike",
     "serviceId": "04",
     "_category_id": "prd06f",
 
-    "BikeDetails": {
+   
       "bikeName": "BRABUS cd1300",
       "brandName": "BRABUS",
       "location": "Chittagong",
@@ -97,14 +92,13 @@
       "SellerName": "",
       "used": " 2 months",
       "image": "https://ultimatemotorcycling.com/wp-content/uploads/2022/02/brabus-1300-r-first-look-ktm-1290-super-duke-r-evo-upright-sportbike-9.jpg"
-    }
-  },
+    },
   {
     "CategoryName": "Cruiser Bike",
     "serviceId": "02",
     "_category_id": "prd07g",
 
-    "BikeDetails": {
+   
       "bikeName": "Cruiser Bike",
       "brandName": "QJ Motor SRV 300",
       "location": "Chittagong",
@@ -114,14 +108,13 @@
       "SellerName": "",
       "used": " 2 months",
       "image": "https://imgd.aeplcn.com/310x174/n/cw/ec/129571/v302c-right-front-three-quarter.gif?isig=0"
-    }
-  },
+    },
+  
   {
     "CategoryName": "Cruiser Bike",
     "serviceId": "02",
     "_category_id": "prd08i",
     "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/129571/v302c-right-front-three-quarter.gif?isig=0",
-    "BikeDetails": {
       "bikeName": "Cruiser Bike",
       "brandName": "QJ Motor SRV 300",
       "location": "Chittagong",
@@ -131,8 +124,7 @@
       "SellerName": "",
       "used": " 2 months",
       "image": "https://imgd.aeplcdn.com/310x174/n/cw/ec/129571/v302c-right-front-three-quarter.gif?isig=0"
-    }
-  }
+    } 
 ]
 [
   {
@@ -157,3 +149,36 @@
  
  }
 ]
+
+  
+  {
+    "CategoriesName": "Standard Bike",
+    "serviceId": "01",
+    "BikeDetails": 
+      {
+        "bikeName": "Discover",
+        "brandName":"Bajaj",
+        "location": "Chittagong",
+        "resellPrice": "120000",
+        "marketPrice": "170000",
+        "used": " 2 months",
+        "image": "https://www.motorbeam.com/wp-content/uploads/2015-Bajaj-Discover-1200x900.jpg"
+      }
+    
+  },
+  {
+    "CategoriesName": "Standard Bike",
+    "serviceId": "01",
+    "BikeDetails":
+      {
+        "bikeName": "pulsar",
+        "brandName":"Bajaj",
+        "location": "Chittagong",
+        "resellPrice": "120000",
+        "marketPrice": "170000",
+        "used": " 2 months",
+        "image": "https://images.hindustantimes.com/auto/img/2021/07/16/600x338/bajaj-pulsar-125-front0_-_Copy_1592465618551_1592465628439_1626422381835.jpg"
+      }
+    
+  },
+  
