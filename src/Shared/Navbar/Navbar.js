@@ -110,7 +110,7 @@ const Navbar = () => {
             <img src={logo2} alt="" className=" logo1 w-56 h-20" />
           </Link>
           <label htmlFor="dashBoardDrawer">
-          <RiBarChartHorizontalLine className="logo2 w-56 h-16 text-black"></RiBarChartHorizontalLine>
+          <RiBarChartHorizontalLine className="logo2 w-8 h-8 text-white"></RiBarChartHorizontalLine>
           </label>
           <Link to="/home">
             <img src={logo1} alt="" className=" logo2 w-36 h-16" />

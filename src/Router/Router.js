@@ -11,6 +11,7 @@ import MoreDetails from "../Components/MoreDetails/MoreDetails";
 import MyOrder from "../Components/MyOrder/MyOrder";
 import Login from "../Components/Page/Login/Login";
 import Register from "../Components/Page/Register/Register";
+import AddProduct from "../Dashboard/AddProduct/AddProduct";
 import DashLayout from "../Dashboard/DashboardLayout/DashLayout";
 import MainLayout from "../Layout/MainLayout/MainLayout";
 import Error from "../Shared/Error/Error";
@@ -39,7 +40,11 @@ const Router = () => {
     },
     {path:"*", element: <Error></Error>},
     {
-      path: "Dashboard", element: <DashLayout></DashLayout>
+      path: "Dashboard", element: <DashLayout></DashLayout>, 
+      children: [
+        {path: '/Dashboard', element: <MyOrder></MyOrder>},
+        {path: '/Dashboard/AddProduct', element: <AddProduct></AddProduct>},
+      ]
     }
 
   ]);
