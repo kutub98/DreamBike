@@ -11,7 +11,7 @@ const Banner = () => {
         <div id="slide1" className="carousel-item relative w-full">
           <img src={slide1}  alt="/" className="w-full h-[550px] relative" />
           <div className="absolute textBanner h-full w-full">
-                <div className="text mt-16 ml-32 w-1/2">
+                <div className="text mt-16 ml-32 w-1/2 hide bannerText">
                     <h1 className="text-red-500 text-2xl mb-4 font-extrabold">Dreams will comes true</h1>
                     <h1 className="text-5xl text-white font-extrabold">EVERYONE HAS A DREAM</h1>
                     <p className="mt-10 text-white">For making your dreams comes true <span className="text-red-700 font-bold">YDBIKE</span> will best option for you because <span className="text-red-700 font-bold">YDBIKE</span> is have a special affordable price in multiple brands bike, you can buy brand new motor used or used bike  </p>
@@ -35,7 +35,7 @@ const Banner = () => {
         <div id="slide2" className="carousel-item relative w-full">
           <img src={slide2}  alt="/" className="w-full h-[550px] relative" />
           <div className="absolute textBanner h-full w-full">
-                <div className="text mt-16 ml-32 w-1/2">
+                <div className="text mt-16 ml-32 w-1/2 hide bannerText">
                     <h1 className="text-red-500 text-2xl mb-4 font-extrabold">Dreams will comes true</h1>
                     <h1 className="text-5xl text-white font-extrabold">EVERYONE HAS A DREAM</h1>
                     <p className="mt-10 text-white">For making your dreams comes true <span className="text-red-700 font-bold">YDBIKE</span> will best option for you because <span className="text-red-700 font-bold">YDBIKE</span> is have a special affordable price in multiple brands bike, you can buy brand new motor used or used bike  </p>
@@ -59,7 +59,7 @@ const Banner = () => {
         <div id="slide3" className="carousel-item relative w-full">
           <img src={slide3}  alt="/" className="w-full h-[550px] relative" />
           <div className="absolute textBanner h-full w-full">
-                <div className="text mt-16 ml-32 w-1/2">
+                <div className="text mt-16 ml-32 w-1/2 hide bannerText">
                     <h1 className="text-red-500 text-2xl mb-4 font-extrabold">Dreams will comes true</h1>
                     <h1 className="text-5xl text-white font-extrabold">EVERYONE HAS A DREAM</h1>
                     <p className="mt-10 text-white">For making your dreams comes true <span className="text-red-700 font-bold">YDBIKE</span> will best option for you because <span className="text-red-700 font-bold">YDBIKE</span> is have a special affordable price in multiple brands bike, you can buy brand new motor used or used bike  </p>
@@ -83,7 +83,7 @@ const Banner = () => {
         <div id="slide4" className="carousel-item relative w-full">
           <img src={slide1}  alt="/" className="w-full h-[550px] relative" />
           <div className="absolute textBanner h-full w-full">
-                <div className="text mt-16 ml-32 w-1/2">
+                <div className="text mt-16 ml-32 w-1/2 hide bannerText">
                     <h1 className="text-red-500 text-2xl mb-4 font-extrabold">Dreams will comes true</h1>
                     <h1 className="text-5xl text-white font-extrabold">EVERYONE HAS A DREAM</h1>
                     <p className="mt-10 text-white">For making your dreams comes true <span className="text-red-700 font-bold">YDBIKE</span> will best option for you because <span className="text-red-700 font-bold">YDBIKE</span> is have a special affordable price in multiple brands bike, you can buy brand new motor used or used bike  </p>

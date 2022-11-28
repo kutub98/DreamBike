@@ -48,8 +48,7 @@ const Navbar = () => {
       </li>
       <li className=" p-3" onClick={() => setOpenMenu(!openMenu)}>
         <Link className=" text-xl" to="/Brand">
-          Brand
-        </Link>
+      All Products        </Link>
       </li>
       <li className=" p-3" onClick={() => setOpenMenu(!openMenu)}>
         <Link to="/Categories" className=" text-xl">

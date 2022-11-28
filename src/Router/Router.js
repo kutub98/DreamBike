@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import About from "../Components/About/About";
 import Blog from "../Components/Blog/Blog";
-import Brand from "../Components/Brand/Brand";
+import Brand from "../Components/AllProducts/AllProducts";
 import Brands from "../Components/Brands/Brands";
 import Categories from "../Components/Categories/Categories";
 import Standard from "../Components/CategoryType/Standard/Standard";
@@ -11,6 +11,7 @@ import MoreDetails from "../Components/MoreDetails/MoreDetails";
 import MyOrder from "../Components/MyOrder/MyOrder";
 import Login from "../Components/Page/Login/Login";
 import Register from "../Components/Page/Register/Register";
+import AdminRoute from "../Components/PrivateRoute/AdminRoute";
 import AddProduct from "../Dashboard/AddProduct/AddProduct";
 import AllBuyers from "../Dashboard/AllBuyers/AllBuyers";
 import AllSeller from "../Dashboard/AllSeller/AllSeller";
@@ -36,8 +37,8 @@ const Router = () => {
         { path: "Login", element: <Login></Login> },
         { path: "Register", element: <Register></Register> },
         { path: "MyOrder", element: <MyOrder></MyOrder>,},
-        { path: "/allCategories/:serviceId", element: <Standard></Standard>,
-        loader: ({ params }) => fetch(`http://localhost:5000/allCategories/${params.serviceId}`)},
+        { path: "/allCategories/:CategoryName", element: <Standard></Standard>,
+        loader: ({ params }) => fetch(`http://localhost:5000/allCategories/${params.CategoryName}`)},
         { path: "/productId/:_id", element: <MoreDetails></MoreDetails>,
         loader: ({ params }) => fetch(`http://localhost:5000/productId/${params._id}`)},
       ],
@@ -50,10 +51,10 @@ const Router = () => {
         {path: '/Dashboard', element: <MyOrder></MyOrder>},
         {path: '/Dashboard/AddProduct', element: <AddProduct></AddProduct>},
         {path: '/Dashboard/MyProduct', element: <MyProduct></MyProduct>},
-        {path: '/Dashboard/Reported', element: <ReportedItems></ReportedItems>},
-        {path: '/Dashboard/AllUsers', element: <AllUsers></AllUsers>},
-        {path: '/Dashboard/AllSeller', element: <AllSeller></AllSeller>},
-        {path: '/Dashboard/AllBuyers', element: <AllBuyers></AllBuyers>},
+        {path: '/Dashboard/Reported', element: <AdminRoute><ReportedItems></ReportedItems></AdminRoute>},
+        {path: '/Dashboard/AllUsers', element: <AdminRoute><AllUsers></AllUsers></AdminRoute> },
+        {path: '/Dashboard/AllSeller', element: <AdminRoute><AllSeller></AllSeller></AdminRoute>},
+        {path: '/Dashboard/AllBuyers', element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>},
         
       ]
     }

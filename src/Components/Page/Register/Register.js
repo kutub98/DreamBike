@@ -186,7 +186,7 @@ const Register = () => {
                 <option disabled selected value="Select role">
                   Select Role
                 </option>
-                <option value="Normal">Normal User</option>
+                <option value="Normal">Normal</option>
                 <option value="Seller">Seller</option>
                 <option value="Buyer">Buyer</option>
               </select>
