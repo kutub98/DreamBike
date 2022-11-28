@@ -5,30 +5,21 @@ import { authContext } from "../../Context/AuthContext/AuthContext";
 import SingleOrdeCmp from "./SingleOrderComponetnt/SingleOrdeCmp";
 
 const MyOrder = () => {
-    const {user} = useContext(authContext)
-    const [Already, setAlread] = useState()
+  const { user } = useContext(authContext);
 
-    useEffect((email)=> {
-      fetch(`http://localhost:5000/ordered/${email}`)
-      .then(data => data.json())
-      .then(res => setAlread(res))
-    }, [])
+  const { data: ordered = [], isLoading } = useQuery({
+    queryKey: ["orderd", user?.email],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5000/ordered/${user?.email}`);
+      const data = await res.json();
+      return data;
+    },
+  });
 
-    console.log(Already)
-    const {data: ordered =[], isLoading}= useQuery({
-        queryKey: ['orderd', user?.email],
-        queryFn : async()=>{
-          const res = await fetch(`http://localhost:5000/ordered/${user?.email}`)
-          const data = await res.json()
-          return data;
-        }
-      })
-      
-    
   return (
     <div>
       <div className="container p-2 mx-auto sm:p-4 text-gray-800">
-        <h2 className="mb-4 text-2xl font-semibold leading-tight">My Orders</h2>
+      <h1 className="text-black font-extrabold text-lg text-center my-3">My Order</h1>
         <div className="overflow-x-auto">
           <table className="min-w-full text-xs">
             <thead className="bg-gray-300">
@@ -44,10 +35,9 @@ const MyOrder = () => {
               </tr>
             </thead>
             <tbody>
-              {
-                ordered.map((singOrder, idx)  => <SingleOrdeCmp key={singOrder._id} singOrder={singOrder} idx={idx+1} ></SingleOrdeCmp>)
-              }
-              
+              {ordered.map((singOrder, idx) => (
+                <SingleOrdeCmp key={singOrder._id} singOrder={singOrder} idx={idx + 1}></SingleOrdeCmp>
+              ))}
             </tbody>
           </table>
         </div>

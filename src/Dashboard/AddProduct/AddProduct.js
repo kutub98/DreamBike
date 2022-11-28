@@ -2,7 +2,7 @@ import { da } from "date-fns/locale";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Form } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import { authContext } from "../../Context/AuthContext/AuthContext";
 
 const AddProduct = () => {
@@ -13,6 +13,7 @@ const AddProduct = () => {
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate()
   const addingProduct = (event) => {
     const name = event.name;
     const bikeName = event.bikeName;
@@ -68,11 +69,16 @@ const AddProduct = () => {
       .then(data => data.json())
       .then(res => {
         console.log(res)
-        if(res.acknowledge){
+        if(res.acknowledged){
           toast.success('Successfully Product Add')
+          navigate("/Dashboard/MyProduct")
         }
+        
       })
-
+      .catch(error => {
+        const errors = error.message
+        toast.error(errors)
+      })
     
     })
 

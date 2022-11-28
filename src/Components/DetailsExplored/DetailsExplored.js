@@ -1,11 +1,8 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import Swal from 'sweetalert2/dist/sweetalert2.js'
-
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
 // CommonJS
-
-
 
 import {
   TbBrandEdge,
@@ -19,17 +16,16 @@ import { authContext } from "../../Context/AuthContext/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const DetailsExplored = ({ detailsExplored, Already }) => {
-  const {user} = useContext(authContext)
+  const { user } = useContext(authContext);
   // console.log(user)
   const [close, setClose] = useState(true);
-  const navigate = useNavigate()
-  
-  console.log(Already)
+  const navigate = useNavigate();
+
+  console.log(Already);
   const { SellerName, bikeName, brandName, date, _id, image, location, marketPrice, resellPrice, used } =
     detailsExplored;
-    console.log(detailsExplored)
+  console.log(detailsExplored);
 
-   
   // handlingBooking for order
   const handlingBooking = (event) => {
     event.preventDefault();
@@ -50,72 +46,44 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
       receivedLocation: location,
       customerNumber: number,
       productId: _id,
-      productImag: image
-    }
-    console.log(orderByBookingInfo)
+      productImag: image,
+    };
+    console.log(orderByBookingInfo);
 
-    if(_id){
-      return toast.error("Sorry You All ready booked it")
-    }else{
-      const url = 'http://localhost:5000/booked';
-    fetch(url, {
-      method: "POST",
-      headers: {
-        'content-type': 'application/json',
-        authorization: `bikerToken ${localStorage.setItem("bikerToken", user.email)}`
-      },
-      body: JSON.stringify(orderByBookingInfo)
-    })
-    .then(res => res.json())
-    .then(data =>{
-      if(data.acknowledged){
-        toast.success('Successfully booked')
-      }
-    })
-
-    setClose(false)
-    }
     //saving data for order in database
-    const url = 'http://localhost:5000/booked';
+    const url = "http://localhost:5000/booked";
     fetch(url, {
       method: "POST",
       headers: {
-        'content-type': 'application/json',
-        authorization: `bikerToken ${localStorage.setItem("bikerToken", user.email)}`
+        "content-type": "application/json",
+        authorization: `bikerToken ${localStorage.setItem("bikerToken", user.email)}`,
       },
-      body: JSON.stringify(orderByBookingInfo)
+      body: JSON.stringify(orderByBookingInfo),
     })
-    .then(res => res.json())
-    .then(data =>{
-      if(data.acknowledged){
-        toast.success('Successfully booked')
-      }
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("Successfully booked");
+        }
+      });
 
-    setClose(false)
-
-
-
+    setClose(false);
 
     // console.log("name", name,"email", email,"price", price,"bikeName", bikeName, "location", location, "number",number);
   };
 
-
   // alert for login
-  const alertForLogin =()=>{
-    
- 
-   const confirm = window.confirm("If You want to booking a order you have to login first, are sure?")
-    if(confirm){
-      navigate('/login')
-    }else{
-      return
+  const alertForLogin = () => {
+    const confirm = window.confirm("If You want to booking a order you have to login first, are sure?");
+    if (confirm) {
+      navigate("/login");
+    } else {
+      return;
     }
-   
-    // toast.message("If You want to booking a order you have to login first")
-    // return 
-  }
 
+    // toast.message("If You want to booking a order you have to login first")
+    // return
+  };
 
   return (
     <div>
@@ -173,16 +141,16 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
       <div className=" ">
         <div className=" w-full">
           {/* The button to open modal */}
-         
-          {
-            user?.uid ?
-             <label htmlFor="bookNow" className="btn w-1/2 flex my-3 mx-auto">
-            Book Now
-          </label> : <label htmlFor="" onClick={alertForLogin} className="btn w-1/2 flex my-3 mx-auto">
-            Book Now
-          </label>
-          }
-        
+
+          {user?.uid ? (
+            <label htmlFor="bookNow" className="btn w-1/2 flex my-3 mx-auto">
+              Book Now
+            </label>
+          ) : (
+            <label htmlFor="" onClick={alertForLogin} className="btn w-1/2 flex my-3 mx-auto">
+              Book Now
+            </label>
+          )}
 
           {/* Put this part before </body> tag */}
           <input type="checkbox" id="bookNow" className="modal-toggle" />
@@ -198,11 +166,7 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
                     <input
                       type="text"
                       name="name"
-                      
-                      defaultValue= {
-                        user?.uid ? user?.displayName : "User"
-                      }
-                     
+                      defaultValue={user?.uid ? user?.displayName : "User"}
                       readOnly
                       id="name"
                       placeholder="name"
@@ -217,9 +181,7 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
                       type="email"
                       name="email"
                       id="email"
-                      defaultValue= {
-                        user?.uid ? user.email : "User"
-                      }
+                      defaultValue={user?.uid ? user.email : "User"}
                       readOnly
                       placeholder="email"
                       className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400 border-green-400"
@@ -284,7 +246,9 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
                   <button className="block w-full p-3 bg-green-600 text-white text-center rounded-sm dark:text-gray-900 dark:bg-violet-400">
                     Submit
                   </button>
-                  <label  htmlFor="bookNow" className="btn btn-sm w-96 mb-6 bg-red-600 py-4 absolute ">Close</label>
+                  <label htmlFor="bookNow" className="btn btn-sm w-96 mb-6 bg-red-600 py-4 absolute ">
+                    Close
+                  </label>
                 </form>
               </div>
             </label>
