@@ -13,7 +13,7 @@ import useAdmin from "../../Hook/UseAdmin";
 import DashNav from "../DashNav/DashNav";
 const DashLayout = () => {
   const {user, logOut} = useContext(authContext)
-  const {isAdmin} = useAdmin(user.userRole)
+  const {isAdmin , isAdminLoading} = useAdmin(user.userRole)
 
   const signOut = ()=>{
     logOut()
@@ -56,7 +56,7 @@ const DashLayout = () => {
                 </Link>
               </li>
               
-              {isAdmin && <>
+              
                 <li className="text-gray-700 font-bold text-xl">
                 <Link to="/Dashboard/AllUsers">
                   {" "}
@@ -89,8 +89,7 @@ const DashLayout = () => {
                 </Link>
               </li>
               </>
-              }
-            </>
+             
           </ul>
         </div>
       </div>

@@ -17,7 +17,7 @@ const MySingleProduct = ({ mySinglePrd }) => {
       <th className="text-center">{mySinglePrd.resellPrice}</th>
       <th className="text-center">
         {
-            soldOut ? <button>Sold</button> : <button>Available</button>
+            soldOut ? <button>Sold</button> : <button>Advertise now</button>
         }
         
       </th>

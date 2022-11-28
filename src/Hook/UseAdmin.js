@@ -6,16 +6,16 @@ const useAdmin = email => {
     const [isAdmin, setIsAdmin] = useState(false);
     const [isAdminLoading, setIsAdminLoading] = useState(true);
     useEffect(() => {
-        if (user?.userRole === 'admin') {
-            fetch(`http://localhost:5000/allUsers/${user?.userRole=== 'admin'}`)
+        if (user?.userRole) {
+            fetch(`http://localhost:5000/allUsers/${user?.userRole === 'admin'}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
                     setIsAdmin(data.isAdmin);
                     setIsAdminLoading(false);
                 })
-        }
-    }, [user?.userRole === 'admin'])
+}
+    }, [user?.userRole])
     return [isAdmin, isAdminLoading]
 }
 

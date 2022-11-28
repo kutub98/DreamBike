@@ -52,9 +52,9 @@ const DashNav = () => {
           Reported Items
         </Link>
       </li>
-      <li  className="p-2text-[16px] bg-red-600 rounded text-white" onClick={() => setOpenMenu(!openMenu)}>
+      <li  className="p-2 text-[16px] bg-red-600 rounded text-white" onClick={() => setOpenMenu(!openMenu)}>
         <Link onClick={signOut} className="" to="/Blog">
-          log out
+          Log out
         </Link>
       </li>
     </React.Fragment>
