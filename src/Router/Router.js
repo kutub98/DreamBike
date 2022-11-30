@@ -36,30 +36,63 @@ const Router = () => {
         { path: "Categories", element: <Categories></Categories> },
         { path: "Login", element: <Login></Login> },
         { path: "Register", element: <Register></Register> },
-        { path: "MyOrder", element: <MyOrder></MyOrder>,},
-        { path: "/allCategories/:CategoryName", element: <Standard></Standard>,
-        loader: ({ params }) => fetch(`http://localhost:5000/allCategories/${params.CategoryName}`)},
-        { path: "/productId/:_id", element: <MoreDetails></MoreDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/productId/${params._id}`)},
+        { path: "MyOrder", element: <MyOrder></MyOrder> },
+        {
+          path: "/allCategories/:CategoryName",
+          element: <Standard></Standard>,
+          loader: ({ params }) =>
+            fetch(`https://dream-bike-server-rose.vercel.app/allCategories/${params.CategoryName}`),
+        },
+        {
+          path: "/productId/:_id",
+          element: <MoreDetails></MoreDetails>,
+          loader: ({ params }) => fetch(`https://dream-bike-server-rose.vercel.app/productId/${params._id}`),
+        },
       ],
-      
     },
-    {path:"*", element: <Error></Error>},
+    { path: "*", element: <Error></Error> },
     {
-      path: "Dashboard", element: <DashLayout></DashLayout>, 
+      path: "Dashboard",
+      element: <DashLayout></DashLayout>,
       children: [
-        {path: '/Dashboard', element: <MyOrder></MyOrder>},
-        {path: '/Dashboard/MyOrders', element: <MyOrder></MyOrder>},
-        {path: '/Dashboard/AddProduct', element: <AddProduct></AddProduct>},
-        {path: '/Dashboard/MyProduct', element: <MyProduct></MyProduct>},
-        {path: '/Dashboard/Reported', element: <AdminRoute><ReportedItems></ReportedItems></AdminRoute>},
-        {path: '/Dashboard/AllUsers', element: <AdminRoute><AllUsers></AllUsers></AdminRoute> },
-        {path: '/Dashboard/AllSeller', element: <AdminRoute><AllSeller></AllSeller></AdminRoute>},
-        {path: '/Dashboard/AllBuyers', element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>},
-        
-      ]
-    }
-
+        { path: "/Dashboard", element: <MyOrder></MyOrder> },
+        { path: "/Dashboard/MyOrders", element: <MyOrder></MyOrder> },
+        { path: "/Dashboard/AddProduct", element: <AddProduct></AddProduct> },
+        { path: "/Dashboard/MyProduct", element: <MyProduct></MyProduct> },
+        {
+          path: "/Dashboard/Reported",
+          element: (
+            <AdminRoute>
+              <ReportedItems></ReportedItems>
+            </AdminRoute>
+          ),
+        },
+        {
+          path: "/Dashboard/AllUsers",
+          element: (
+            <AdminRoute>
+              <AllUsers></AllUsers>
+            </AdminRoute>
+          ),
+        },
+        {
+          path: "/Dashboard/AllSeller",
+          element: (
+            <AdminRoute>
+              <AllSeller></AllSeller>
+            </AdminRoute>
+          ),
+        },
+        {
+          path: "/Dashboard/AllBuyers",
+          element: (
+            <AdminRoute>
+              <AllBuyers></AllBuyers>
+            </AdminRoute>
+          ),
+        },
+      ],
+    },
   ]);
   return (
     <div>
@@ -67,9 +100,5 @@ const Router = () => {
     </div>
   );
 };
-
-
-
-
 
 export default Router;

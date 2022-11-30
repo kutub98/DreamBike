@@ -4,7 +4,7 @@ import SingleBuyers from "./SingleBuyers";
 const AllBuyers = () => {
   const [buyers, setSeller] = useState([]);
   useEffect((id) => {
-    fetch(" http://localhost:5000/buyer/Buyer/")
+    fetch(" https://dream-bike-server-rose.vercel.app/buyer/Buyer/")
       .then((res) => res.json())
       .then((data) => setSeller(data));
   }, []);
@@ -12,9 +12,8 @@ const AllBuyers = () => {
 
   return (
     <div>
-         <h1 className="text-center font-extrabold text-3xl my-3 text-black">All Buyers</h1>
+      <h1 className="text-center font-extrabold text-3xl my-3 text-black">All Buyers</h1>
       <table className="table w-full">
-       
         <thead>
           <tr>
             <th className="text-center">SL</th>

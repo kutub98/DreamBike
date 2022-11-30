@@ -4,7 +4,7 @@ import SingleSeller from "./SingleSeller";
 const AllSeller = () => {
   const [seller, setSeller] = useState([]);
   useEffect((id) => {
-    fetch("http://localhost:5000/seller/Seller")
+    fetch("https://dream-bike-server-rose.vercel.app/seller/Seller")
       .then((res) => res.json())
       .then((data) => setSeller(data));
   }, []);

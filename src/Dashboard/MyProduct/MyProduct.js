@@ -7,16 +7,15 @@ const MyProduct = () => {
   const [myProducts, setMyProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myProduct/${user?.email}`)
+    fetch(`https://dream-bike-server-rose.vercel.app/myProduct/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setMyProducts(data));
   }, []);
 
   return (
     <div>
-        <h1 className="text-center font-extrabold text-3xl my-3 text-black">My product </h1>
+      <h1 className="text-center font-extrabold text-3xl my-3 text-black">My product </h1>
       <div className="overflow-x-auto">
-       
         <table className="table table-zebra w-full">
           <thead>
             <tr>
@@ -29,10 +28,10 @@ const MyProduct = () => {
             </tr>
           </thead>
           <tbody>
-            {
-                myProducts.map(mPrd => <MySingleProduct key={mPrd._Id} mySinglePrd = {mPrd}></MySingleProduct>)
-            }
-            </tbody>
+            {myProducts.map((mPrd) => (
+              <MySingleProduct key={mPrd._Id} mySinglePrd={mPrd}></MySingleProduct>
+            ))}
+          </tbody>
         </table>
       </div>
     </div>

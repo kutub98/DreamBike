@@ -13,7 +13,7 @@ const AddProduct = () => {
     formState: { errors },
   } = useForm();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const addingProduct = (event) => {
     const name = event.name;
     const bikeName = event.bikeName;
@@ -28,61 +28,54 @@ const AddProduct = () => {
 
     // console.log(name, CategoryName, bikeName, brandName, location, marketPrice, resellPrice, used, image);
 
-    
     const formData = new FormData();
     formData.append("image", event.image[0]);
 
-   
     const url = "https://api.imgbb.com/1/upload?key=66ec6767006d71f52c699460fc28550b";
     fetch(url, {
       method: "POST",
       body: formData,
     })
-    .then(data => data.json())
-    .then(result => {
-      console.log(result.data.display_url)
-      const image = result.data.display_url;
+      .then((data) => data.json())
+      .then((result) => {
+        console.log(result.data.display_url);
+        const image = result.data.display_url;
 
-      //Posting a product to Allbikes collection
-      const productsDetails ={
-        sellerName: name,
-        bikeName: bikeName,
-        CategoryName: CategoryName,
-        brandName: brandName,
-        location: location,
-        resellPrice: resellPrice,
-        marketPrice: marketPrice,
-        image: image,
-        email: email,
-        used: used,
-      }
+        //Posting a product to Allbikes collection
+        const productsDetails = {
+          sellerName: name,
+          bikeName: bikeName,
+          CategoryName: CategoryName,
+          brandName: brandName,
+          location: location,
+          resellPrice: resellPrice,
+          marketPrice: marketPrice,
+          image: image,
+          email: email,
+          used: used,
+        };
 
-      const url = 'http://localhost:5000/allBikes';
-      fetch(url, {
-        method: "POST",
-        headers:{
-          'content-type': 'application/json',
-          
-        },
-        body: JSON.stringify(productsDetails)
-      })
-      .then(data => data.json())
-      .then(res => {
-        console.log(res)
-        if(res.acknowledged){
-          toast.success('Successfully Product Add')
-          navigate("/Dashboard/MyProduct")
-        }
-        
-      })
-      .catch(error => {
-        const errors = error.message
-        toast.error(errors)
-      })
-    
-    })
-
-    
+        const url = "https://dream-bike-server-rose.vercel.app/allBikes";
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(productsDetails),
+        })
+          .then((data) => data.json())
+          .then((res) => {
+            console.log(res);
+            if (res.acknowledged) {
+              toast.success("Successfully Product Add");
+              navigate("/Dashboard/MyProduct");
+            }
+          })
+          .catch((error) => {
+            const errors = error.message;
+            toast.error(errors);
+          });
+      });
   };
   return (
     <div className="p-12 bg-violet-50">
@@ -152,7 +145,7 @@ const AddProduct = () => {
             </div>
             <div className="">
               <label forHtml="CategoryName" className=" text-black text-sm font-bold">
-              Select Product Category
+                Select Product Category
               </label>
               <select
                 {...register("CategoryName")}

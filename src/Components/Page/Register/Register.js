@@ -65,7 +65,7 @@ const Register = () => {
                 setCreateEmail(userInfo.email)
                 console.log(userInformation);
 
-                fetch("http://localhost:5000/allUser", {
+                fetch("https://dream-bike-server-rose.vercel.app/allUser", {
                   method: "POST",
                   headers: {
                     "content-type": "application/json",
@@ -87,7 +87,7 @@ const Register = () => {
                 const errors = error.message;
               });
 
-            // fetch("http://localhost:5000/allUser", {
+            // fetch("https://dream-bike-server-rose.vercel.app/allUser", {
             //   method: "POST",
             //   headers: {
             //     "content-type": "application/json",
@@ -112,7 +112,7 @@ const Register = () => {
   // const SaveUsers = (email, userName) => {
   //   const saveUsers = { userName, email };
   //   console.log(saveUsers);
-  //   fetch("http://localhost:5000/allUser", {
+  //   fetch("https://dream-bike-server-rose.vercel.app/allUser", {
   //     method: "POST",
   //     headers: {
   //       "content-type": "application/json",
@@ -144,7 +144,7 @@ const Register = () => {
         };
         console.log(result);
 
-        fetch("http://localhost:5000/allUser", {
+        fetch("https://dream-bike-server-rose.vercel.app/allUser", {
           method: "POST",
           headers: {
             "content-type": "application/json",

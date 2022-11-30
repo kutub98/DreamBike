@@ -7,7 +7,7 @@ const Categories = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allCategories")
+    fetch("https://dream-bike-server-rose.vercel.app/allCategories")
       .then((data) => data.json())
       .then((res) => setCategories(res));
   }, []);
@@ -19,11 +19,10 @@ const Categories = () => {
         <h1 className="text-5xl text-red-700 font-medium">All Categories</h1>
       </div>
       <div className=" gap-4 my-10 grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 ">
-      {categories.map((category) => (
-        <SingleCategory key={category._id} category={category}></SingleCategory>
-      ))}
+        {categories.map((category) => (
+          <SingleCategory key={category._id} category={category}></SingleCategory>
+        ))}
       </div>
-      
     </div>
   );
 };

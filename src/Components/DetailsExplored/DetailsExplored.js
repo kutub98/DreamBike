@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2/dist/sweetalert2.js";
-import { FaHeart, FaHeartbeat } from "react-icons/fa";
+import { FaHeart, FaHeartbeat, FaRegHeart } from "react-icons/fa";
 import "./DetailsExplored.css";
+
 // CommonJS
 
 import {
@@ -21,6 +22,8 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
   // console.log(user)
   const [close, setClose] = useState(true);
   const navigate = useNavigate();
+  const [addToList, setAddToList] = useState(false);
+  const [reportItem, setReportItem] = useState(false);
 
   console.log(Already);
   const { SellerName, bikeName, brandName, date, _id, image, location, marketPrice, resellPrice, used } =
@@ -52,7 +55,7 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
     console.log(orderByBookingInfo);
 
     //saving data for order in database
-    const url = "http://localhost:5000/booked";
+    const url = "https://dream-bike-server-rose.vercel.app/booked";
     fetch(url, {
       method: "POST",
       headers: {
@@ -86,15 +89,62 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
     // return
   };
 
+  // addedToWishList
+
+  const addedToWishList = () => {
+    fetch("https://dream-bike-server-rose.vercel.app/wishListItem", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+        }
+        console.log(data);
+      });
+    toast.success("Added to the your wish list");
+  };
+
+  //removedWishList
+  const removedWishList = () => {
+    toast.error("Removed to the your wish list");
+  };
+
+  const reportItems = () => {};
+  const reported = () => {
+    toast.success("report now Reported");
+  };
+  const report = () => {
+    toast.error("Already Reported");
+  };
+
   return (
     <div>
       <section className="dark:bg-gray-800 dark:text-gray-100">
-        <div className="container flex flex-col-reverse mx-auto lg:flex-row relative">
-          <div className=" repotAndwishlist p-4 bg-slate-100 absolute">
-            <h1 className=" items-center wishListText hidden my-3">Add to Wishlist</h1>
-            <FaHeart className="w-12 my-2 cursor-pointer heart h-16 bg-red-600 text-white p-1" />
-            <h1 className=" hidden items-center reportText my-3"> Report</h1>
-            <FaHeartbeat className="w-12 my-2 cursor-pointer heartBroken h-16 bg-red-600 text-white p-1" />
+        <div className="container mainBox flex flex-col-reverse mx-auto lg:flex-row relative">
+          <div className="ReportAndWishlist ">
+            <div onClick={() => setAddToList(!addToList)} className="wishList">
+              {addToList ? (
+                <FaHeart className="heart" onClick={removedWishList} />
+              ) : (
+                <FaRegHeart className="heart" onClick={addedToWishList} />
+              )}
+              <h1 className="wishListText ">Add to Wishlist</h1>
+            </div>
+
+            <div onClick={() => setReportItem(!reportItem)} className="Report">
+              {reportItem ? (
+                <h1 onClick={reported} className="reported">
+                  {" "}
+                  Reported
+                </h1>
+              ) : (
+                <FaHeartbeat className=" heartBroken" onClick={report} />
+              )}
+            </div>
           </div>
 
           <div className="flex flex-col px-6 py-8 space-y-6 rounded-sm sm:p-8 lg:p-12 lg:w-1/2 xl:w-2/5 dark:bg-violet-400 dark:text-gray-900">
