@@ -15,7 +15,7 @@ const Details = ({ details }) => {
               {details.bikeName}
               <div className="badge badge-secondary">NEW</div>
             </h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
+            <p>YDBIKE is best platform for all categories motorbike</p>
             <div className=" w-full">
               <Link to={`/productId/${details._id}`}>
                 <button className="btn w-full bg-red-600 text-white border-0">More Details</button>

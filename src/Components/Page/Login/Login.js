@@ -3,63 +3,70 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../../../Context/AuthContext/AuthContext";
+import useToken from "../../../Context/AuthToken/useToken";
+
 import Loading from "../../Loading/Loading";
 
 const Login = () => {
-  const { user,loginWithEp, setLoading, loading, loginWithGoogle, loginWithGitHub } = useContext(authContext);
-  const [error, setError] = useState()
+  const { user, loginWithEp, setLoading, loading, loginWithGoogle, loginWithGitHub } = useContext(authContext);
+  const [error, setError] = useState();
 
-  const navigate = useNavigate()
-  const location = useLocation()
+  const [LoginUserEmail, setCreateUserEmail] = useState("");
+  const [token] = useToken(LoginUserEmail);
 
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const from = location?.state?.from?.pathname || '/'
-  
+  const from = location?.state?.from?.pathname || "/";
+
+  if (token) {
+    navigate(from, { replace: true });
+  }
+
   // console.log(user);
-  const { register, handleSubmit, formState: { errors }, } = useForm();
-  const handleLogin = e =>{
-
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const handleLogin = (e) => {
     // console.log(e)
 
     loginWithEp(e.email, e.password)
-    .then(res=> {
-      console.log(res.user)
-      setLoading(false)
-      toast.success('Welcome to Your Dream Bike')
-      navigate(from, {replace: true})
-      
-    })
-    .catch(error =>{
-      const errors = error.message;
-      setError(errors)
-      toast.error('Something went wrong')
-    })
-
+      .then((res) => {
+        console.log(res.user);
+        setLoading(true);
+        toast.success("Welcome to Your Dream Bike");
+        setCreateUserEmail(e.email);
+        // navigate(from, {replace: true})
+      })
+      .catch((error) => {
+        const errors = error.message;
+        setError(errors);
+        toast.error("Something went wrong");
+      });
   };
 
-
-
-  // login with Google Handler 
-  const googleHandler = ()=>{
+  // login with Google Handler
+  const googleHandler = () => {
     loginWithGoogle()
-    .then((result)=> {
-        console.log(result)
-        toast.success('Welcome to Your Dream Bike')
-        navigate(from, {replace: true})
-    })
-    .catch(error => console.error (error))
-  }
-  // login with Google Handler 
-  const githubHandler = ()=>{
+      .then((result) => {
+        console.log(result);
+        toast.success("Welcome to Your Dream Bike");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.error(error));
+  };
+  // login with Google Handler
+  const githubHandler = () => {
     loginWithGitHub()
-    .then((result)=> {
-      
-        console.log(result)
-        toast.success('Welcome to Your Dream Bike')
-        navigate(from, {replace: true})
-    })
-    .catch(error => console.error (error))
-  }
+      .then((result) => {
+        console.log(result);
+        toast.success("Welcome to Your Dream Bike");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.error(error));
+  };
   return (
     <div className="justify-center ">
       <div className="flex flex-col my-4 mx-auto max-w-md p-6 rounded-md sm:p-10 bg-gray-50 text-gray-800">
@@ -68,9 +75,7 @@ const Login = () => {
           <p className="text-sm text-gray-600">log in to access your account</p>
         </div>
         <form onSubmit={handleSubmit(handleLogin)} className="space-y-12 ng-untouched ng-pristine ng-valid">
-        
           <div className="space-y-4">
-          
             {/* email field */}
             <div>
               <label htmlFor="Email" className="block mb-2 text-sm">
@@ -81,11 +86,16 @@ const Login = () => {
                 name="email"
                 id="email"
                 placeholder="Your email"
-                {...register("email", {required: true ,message: "Email required"})}
+                {...register("email", { required: true, message: "Email required" })}
                 className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
                 data-temp-mail-org="0"
               />
-              {errors.email?.type === 'required' && <p className="text-red-600" role="alert"> Email is required</p>}
+              {errors.email?.type === "required" && (
+                <p className="text-red-600" role="alert">
+                  {" "}
+                  Email is required
+                </p>
+              )}
             </div>
             {/* Password field */}
             <div>
@@ -93,29 +103,34 @@ const Login = () => {
                 <label htmlFor="password" className="text-sm">
                   Password
                 </label>
-                <Link className="text-xs hover:underline text-gray-600">
-                  Forgot password?
-                </Link>
+                <Link className="text-xs hover:underline text-gray-600">Forgot password?</Link>
               </div>
               <input
                 type="password"
                 name="password"
                 id="password"
                 placeholder="*****"
-                {...register("password", {required: true ,message: "Email required"})}
+                {...register("password", { required: true, message: "Email required" })}
                 className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
                 data-temp-mail-org="0"
               />
-              {errors.password?.type === 'required' && <p className="text-red-700" role="alert"> Password is required</p>}
+              {errors.password?.type === "required" && (
+                <p className="text-red-700" role="alert">
+                  {" "}
+                  Password is required
+                </p>
+              )}
             </div>
           </div>
           <div className="space-y-2">
             <div>
-              {
-                loading ? <Loading></Loading>: <button type="submit" className="w-full px-8 py-3 font-semibold rounded-md bg-red-700 text-gray-50">
-                Log in
-              </button>
-              }
+              {loading ? (
+                <Loading></Loading>
+              ) : (
+                <button type="submit" className="w-full px-8 py-3 font-semibold rounded-md bg-red-700 text-gray-50">
+                  Log in
+                </button>
+              )}
             </div>
             <p className="text-red-700">{error}</p>
           </div>

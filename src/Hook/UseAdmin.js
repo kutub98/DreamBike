@@ -1,21 +1,21 @@
-import { useContext, useEffect, useState } from "react"
-import { authContext } from "../Context/AuthContext/AuthContext";
+
+import { useEffect, useState } from "react"
 
 const useAdmin = email => {
-    const {user}= useContext(authContext)
     const [isAdmin, setIsAdmin] = useState(false);
     const [isAdminLoading, setIsAdminLoading] = useState(true);
+
     useEffect(() => {
-        if (user?.userRole) {
-            fetch(`http://localhost:5000/allUsers/${user?.userRole === 'admin'}`)
+        if (email) {
+            fetch(`http://localhost:5000/alluser/admin/${email}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
                     setIsAdmin(data.isAdmin);
                     setIsAdminLoading(false);
                 })
-}
-    }, [user?.userRole])
+        }
+    }, [email])
     return [isAdmin, isAdminLoading]
 }
 

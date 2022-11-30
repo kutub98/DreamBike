@@ -17,15 +17,22 @@ const MySingleProduct = ({ mySinglePrd }) => {
       <th className="text-center">{mySinglePrd.resellPrice}</th>
       <th className="text-center">
         {
-            soldOut ? <button>Sold</button> : <button>Advertise now</button>
+            soldOut ?   <button>Sold</button> :  <button>Advertise</button>
+           
         }
         
       </th>
       <th className="text-center">
         {
-             soldOut ? <button>Delete</button> : <button>Edit</button>
+            soldOut ?   <button>Delivered</button> :   <>
+            <button className="bg-red-600 p-3 rounded text-white">Delete</button>
+            <button className="bg-black ml-1 p-3 rounded text-white">Edit</button>
+            </> 
+           
         }
+        
       </th>
+
     </tr>
   );
 };

@@ -5,23 +5,28 @@ import { authContext } from "../../../Context/AuthContext/AuthContext";
 import { getAuth } from "firebase/auth";
 import app from "../../../Firebase/FirebaseConfig/Firebase.config";
 import Loading from "../../Loading/Loading";
-import { setAuthToken } from "../../../Context/AuthToken/AuthToken";
+
 import toast from "react-hot-toast";
+import useToken from "../../../Context/AuthToken/useToken";
 
 const auth = getAuth(app);
+
 const Register = () => {
   const [error, setError] = useState();
   const location = useLocation();
   const navigate = useNavigate();
+  const [createEmail, setCreateEmail] = useState("");
+  const [token] = useToken(createEmail);
+  // const [token] = AuthToken(createEmail);
 
   const from = location?.state?.from?.pathname || "/";
-  const { user, loginWithGitHub, loginWithGoogle, creatingUserWithEp, updatingUser, loading, setLoading } =
-    useContext(authContext);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+
+  if (token) {
+    navigate(from, { replace: true });
+  }
+
+  const { user, loginWithGitHub, loginWithGoogle, creatingUserWithEp, updatingUser, loading, setLoading } =useContext(authContext);
+  const {register,handleSubmit, formState: { errors },} = useForm();
 
   const handleCreatingUser = (e) => {
     const formData = new FormData();
@@ -37,80 +42,127 @@ const Register = () => {
         const image = data.data.display_url;
         console.log(image);
         // create User
+
         creatingUserWithEp(e.email, e.password)
-          .then((users) => {
-            const userInformation = {
-              userName: e.name,
-              userEmail: e.email,
-              userRole: e.role,
-              userImg: image,
-              signMethod: "Registration",
+          .then((res) => {
+            const user = res.user;
+
+            const userInfo = {
+              displayName: e.name,
+              email: e.email,
+              photoURL: image,
+              role: e.role,
+              signMethod: "Register",
             };
-            setAuthToken(users.user);
-            updatingUser(e.name, image)
-              .then(() => alert("created account successfully"))
+            updatingUser(userInfo)
+              .then(() => {
+                const userInformation = {
+                  userName: e.name,
+                  email: e.email,
+                  role: e.role,
+                  signMethod: "Register",
+                };
+                setCreateEmail(userInfo.email)
+                console.log(userInformation);
+
+                fetch("http://localhost:5000/allUser", {
+                  method: "POST",
+                  headers: {
+                    "content-type": "application/json",
+                  },
+                  body: JSON.stringify(userInfo),
+                })
+                  .then((res) => res.json())
+                  .then((data) => {
+                    // console.log(data)
+                    
+                    setLoading(false);
+                  })
+                  .catch((error) => {
+                    const errors = error.message;
+                  });
+              })
+              
               .catch((error) => {
                 const errors = error.message;
               });
 
-            fetch("http://localhost:5000/allUser", {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify(userInformation),
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                setAuthToken(data.user);
-                setLoading(true);
-              })
-              .catch((error) => {
-                const errors = error.message;
-              });
+            // fetch("http://localhost:5000/allUser", {
+            //   method: "POST",
+            //   headers: {
+            //     "content-type": "application/json",
+            //   },
+            //   body: JSON.stringify(userInformation),
+            // })
+            //   .then((res) => res.json())
+            //   .then((data) => {
+            //     setAuthToken(data.user);
+            //     setLoading(true);
+            //   })
+            //   .catch((error) => {
+            //     const errors = error.message;
+            //   });
             // navigating
-            navigate(from, { replace: true });
           })
           .catch((err) => console.error(err));
       });
   };
+
+  // const signMethod = "Registration";
+  // const SaveUsers = (email, userName) => {
+  //   const saveUsers = { userName, email };
+  //   console.log(saveUsers);
+  //   fetch("http://localhost:5000/allUser", {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(saveUsers),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log("saveUser", data);
+  //       setLoading(true);
+  //       setCreateEmail(email);
+  //       // getUserToken(email)(66)
+  //     });
+  // };
+
   // login with Google Handler
   const googleHandler = () => {
     loginWithGoogle()
       .then((result) => {
         const userName = result.user.displayName;
-        const userEmail = result.user.email;
+        const email = result.user.email;
         const userImg = result.user.photoURL;
         const userinfoFromGoogle = {
           userName: userName,
-          userEmail: userEmail,
+          email: email,
           userImg: userImg,
           signMethod: "google",
-          userRole: "Normal user",
+          role: "Normal user",
         };
         console.log(result);
 
-        fetch('http://localhost:5000/allUser', {
-            method: 'POST',
-            headers: {
-              'content-type': 'application/json'
-            },
-            body: JSON.stringify(userinfoFromGoogle)
+        fetch("http://localhost:5000/allUser", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userinfoFromGoogle),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            setLoading(true);
+            console.log(result);
+            toast.success("Welcome to Your Dream Bike");
+            navigate(from, { replace: true });
           })
-          .then(res => res.json())
-          .then(data =>{
-            setAuthToken(data.user)
-            setLoading(true)
-            console.log(result)
-            toast.success('Welcome to Your Dream Bike')
-            navigate(from, {replace: true})
-          })
-          .catch(error => {
-            const errors = error.message
-          })
-        
+          .catch((error) => {
+            const errors = error.message;
+          });
+
         toast.success("Welcome to Your Dream Bike");
-       
       })
       .catch((error) => console.error(error));
   };
@@ -186,7 +238,6 @@ const Register = () => {
                 <option disabled selected value="Select role">
                   Select Role
                 </option>
-                <option value="Normal">Normal</option>
                 <option value="Seller">Seller</option>
                 <option value="Buyer">Buyer</option>
               </select>

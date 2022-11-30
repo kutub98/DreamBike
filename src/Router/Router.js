@@ -49,12 +49,13 @@ const Router = () => {
       path: "Dashboard", element: <DashLayout></DashLayout>, 
       children: [
         {path: '/Dashboard', element: <MyOrder></MyOrder>},
+        {path: '/Dashboard/MyOrders', element: <MyOrder></MyOrder>},
         {path: '/Dashboard/AddProduct', element: <AddProduct></AddProduct>},
         {path: '/Dashboard/MyProduct', element: <MyProduct></MyProduct>},
-        {path: '/Dashboard/Reported', element: <ReportedItems></ReportedItems>},
-        {path: '/Dashboard/AllUsers', element: <AllUsers></AllUsers> },
-        {path: '/Dashboard/AllSeller', element: <AllSeller></AllSeller>},
-        {path: '/Dashboard/AllBuyers', element: <AllBuyers></AllBuyers>},
+        {path: '/Dashboard/Reported', element: <AdminRoute><ReportedItems></ReportedItems></AdminRoute>},
+        {path: '/Dashboard/AllUsers', element: <AdminRoute><AllUsers></AllUsers></AdminRoute> },
+        {path: '/Dashboard/AllSeller', element: <AdminRoute><AllSeller></AllSeller></AdminRoute>},
+        {path: '/Dashboard/AllBuyers', element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>},
         
       ]
     }
@@ -66,6 +67,9 @@ const Router = () => {
     </div>
   );
 };
+
+
+
 
 
 export default Router;

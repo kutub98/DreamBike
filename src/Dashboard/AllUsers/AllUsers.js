@@ -1,8 +1,10 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import SingleUser from "./SingleUser/SingleUser";
 
 const AllUsers = () => {
-    const [users, setUsers] = useState([])
+    const [alluser, setUsers] = useState([])
 
     const userUrl = 'http://localhost:5000/allUser'
     useEffect(()=>{
@@ -11,9 +13,49 @@ const AllUsers = () => {
         .then(res => setUsers(res))
     },[])
 
-    console.log(users)
+
+
+
+
+//     const handleForMakingAdmin =(id)=>{
+//       fetch(`http://localhost:5000/allUser/admin/${id}`, {
+//           method: 'PUT',
+//           headers: {
+//               authorization: `admin ${localStorage.getItem('bikerToken')}`
+//           }
+//       })
+//       .then(res => res.json())
+//       .then(data => {
+//          if(data.modifiedCount > 0){
+//           toast.success("Added as a Admin")
+         
+//          }else{
+//           toast.error('Sorry You are not authorized')
+//          }
+//       })
+// }
+
+
+// const { data: allUser = [], refetch, isLoading } = useQuery({
+//   queryKey: ['appointmentOptions'],
+//   queryFn: async () => {
+//       const res = await fetch("http://localhost:5000/allUser");
+//       const data = await res.json();
+//       return data
+//   }
+// });
+
+
+
+
+
+
+
+
+
   return (
     <div>
+        <h1 className="text-center font-extrabold text-3xl my-3 text-black">All Users</h1>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           <thead>
@@ -29,7 +71,7 @@ const AllUsers = () => {
           </thead>
           <tbody>
             {
-                users.map(user => <SingleUser key={user._id} SingleUser={user}></SingleUser>)
+                alluser.map((user , idx )=> <SingleUser key={user._id} SingleUser={user} idx={idx+1}></SingleUser>)
             }
 
         </tbody>

@@ -8,6 +8,8 @@ const AuthContext = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading]= useState(false)
 
+  console.log(user)
+
 
   //Crating user with email and password
   const creatingUserWithEp = (email, password) => {
@@ -17,12 +19,9 @@ const AuthContext = ({ children }) => {
 
 
   //update profile of user
-  const updatingUser = (name, image) => {
+  const updatingUser = (userInfo) => {
     setLoading(true)
-    return updateProfile(auth.currentUser, {
-      displayName: name,
-      photoURL: image,
-    });
+    return updateProfile(auth.currentUser,userInfo);
   };
 
   // LoginWith email and password 
@@ -67,7 +66,7 @@ const AuthContext = ({ children }) => {
   }, [])
 
   const logout = () => {
-    setLoading(true)
+    setLoading(false)
     localStorage.removeItem('token')
     return signOut(auth)
   }

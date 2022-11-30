@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2/dist/sweetalert2.js";
-
+import { FaHeart, FaHeartbeat } from "react-icons/fa";
+import "./DetailsExplored.css";
 // CommonJS
 
 import {
@@ -88,7 +89,14 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
   return (
     <div>
       <section className="dark:bg-gray-800 dark:text-gray-100">
-        <div className="container flex flex-col-reverse mx-auto lg:flex-row">
+        <div className="container flex flex-col-reverse mx-auto lg:flex-row relative">
+          <div className=" repotAndwishlist p-4 bg-slate-100 absolute">
+            <h1 className=" items-center wishListText hidden my-3">Add to Wishlist</h1>
+            <FaHeart className="w-12 my-2 cursor-pointer heart h-16 bg-red-600 text-white p-1" />
+            <h1 className=" hidden items-center reportText my-3"> Report</h1>
+            <FaHeartbeat className="w-12 my-2 cursor-pointer heartBroken h-16 bg-red-600 text-white p-1" />
+          </div>
+
           <div className="flex flex-col px-6 py-8 space-y-6 rounded-sm sm:p-8 lg:p-12 lg:w-1/2 xl:w-2/5 dark:bg-violet-400 dark:text-gray-900">
             <div>
               <h1 className="flex items-center text-xl font-semibold">
