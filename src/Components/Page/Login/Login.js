@@ -61,7 +61,7 @@ const Login = () => {
           role: "Normal user",
         };
 
-        fetch("http://localhost:5000/allUser", {
+        fetch("https://dream-bike-server-rose.vercel.app/allUser", {
           method: "POST",
           headers: {
             "content-type": "application/json",

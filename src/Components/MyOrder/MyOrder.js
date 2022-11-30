@@ -10,7 +10,7 @@ const MyOrder = () => {
   const { data: ordered = [], isLoading } = useQuery({
     queryKey: ["orderd", user?.email],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/ordered/${user?.email}`);
+      const res = await fetch(`https://dream-bike-server-rose.vercel.app/ordered/${user?.email}`);
       const data = await res.json();
       return data;
     },

@@ -6,21 +6,18 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 const Details = ({ details }) => {
   const [addToList, setAddToList] = useState(false);
   const [reportItem, setReportItem] = useState(false);
-  const {email, sellerName, _id ,image } = details;
+  const { email, sellerName, _id, image } = details;
 
-  
-
-
-    const reportedTo = {
-      sellerEmail: email,
-      sellerName: sellerName,
-      productId: _id,
-      image: image
-    };
+  const reportedTo = {
+    sellerEmail: email,
+    sellerName: sellerName,
+    productId: _id,
+    image: image,
+  };
 
   console.log(details);
   const addedToWishList = () => {
-    fetch("http://localhost:5000/wishListItem", {
+    fetch("https://dream-bike-server-rose.vercel.app/wishListItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -42,8 +39,7 @@ const Details = ({ details }) => {
 
   const reportItems = () => {};
   const report = () => {
-
-    fetch("http://localhost:5000/ReportItem", {
+    fetch("https://dream-bike-server-rose.vercel.app/ReportItem", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -56,7 +52,6 @@ const Details = ({ details }) => {
           toast.success("Reported Successfully ");
         }
       });
-    
   };
   const reported = () => {
     toast.error("Already Reported");

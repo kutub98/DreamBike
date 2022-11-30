@@ -54,7 +54,7 @@ const AddProduct = () => {
           used: used,
         };
 
-        const url = "http://localhost:5000/allBikes";
+        const url = "https://dream-bike-server-rose.vercel.app/allBikes";
         fetch(url, {
           method: "POST",
           headers: {

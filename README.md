@@ -1,5 +1,7 @@
 
 1. SiteName :YDBIKE
+2. Email : severaltask@gmail.com
+3. password:123456
 2. Authorname: Kutub Uddin
 3. version : 0001;
 4. language: {

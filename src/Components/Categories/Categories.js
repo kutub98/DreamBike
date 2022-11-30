@@ -7,7 +7,7 @@ const Categories = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allCategories")
+    fetch("https://dream-bike-server-rose.vercel.app/allCategories")
       .then((data) => data.json())
       .then((res) => setCategories(res));
   }, []);

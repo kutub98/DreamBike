@@ -6,7 +6,7 @@ const useSeller = (email) => {
 
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/alluser/seller/${email}`)
+      fetch(`https://dream-bike-server-rose.vercel.app/alluser/seller/${email}`)
         .then((res) => res.json())
         .then((data) => {
           setIsSeller(data.isSeller);

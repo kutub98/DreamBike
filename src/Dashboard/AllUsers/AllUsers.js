@@ -4,15 +4,17 @@ import toast from "react-hot-toast";
 import SingleUser from "./SingleUser/SingleUser";
 
 const AllUsers = () => {
-  
-
-  const { data: allUser = [], refetch, isLoading } = useQuery({
-    queryKey: ['appointmentOptions'],
+  const {
+    data: allUser = [],
+    refetch,
+    isLoading,
+  } = useQuery({
+    queryKey: ["appointmentOptions"],
     queryFn: async () => {
-        const res = await fetch("http://localhost:5000/allUser");
-        const data = await res.json();
-        return data
-    }
+      const res = await fetch("https://dream-bike-server-rose.vercel.app/allUser");
+      const data = await res.json();
+      return data;
+    },
   });
 
   return (

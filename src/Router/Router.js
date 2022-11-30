@@ -40,12 +40,13 @@ const Router = () => {
         {
           path: "/allCategories/:CategoryName",
           element: <Standard></Standard>,
-          loader: ({ params }) => fetch(`http://localhost:5000/allCategories/${params.CategoryName}`),
+          loader: ({ params }) =>
+            fetch(`https://dream-bike-server-rose.vercel.app/allCategories/${params.CategoryName}`),
         },
         {
           path: "/productId/:_id",
           element: <MoreDetails></MoreDetails>,
-          loader: ({ params }) => fetch(`http://localhost:5000/productId/${params._id}`),
+          loader: ({ params }) => fetch(`https://dream-bike-server-rose.vercel.app/productId/${params._id}`),
         },
       ],
     },

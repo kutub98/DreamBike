@@ -50,7 +50,7 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
     };
 
     //saving data for order in database
-    const url = "http://localhost:5000/booked";
+    const url = "https://dream-bike-server-rose.vercel.app/booked";
     fetch(url, {
       method: "POST",
       headers: {

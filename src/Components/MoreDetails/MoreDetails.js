@@ -10,7 +10,7 @@ const MoreDetails = () => {
   const [Already, setAlready] = useState();
 
   useEffect((email) => {
-    fetch(`http://localhost:5000/ordered/${user?.email}`)
+    fetch(`https://dream-bike-server-rose.vercel.app/ordered/${user?.email}`)
       .then((data) => data.json())
       .then((res) => setAlready(res));
   }, []);

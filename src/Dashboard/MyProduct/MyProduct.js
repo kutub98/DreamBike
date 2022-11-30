@@ -8,18 +8,22 @@ const MyProduct = () => {
   // const [myProducts, setMyProducts] = useState([]);
 
   // useEffect(() => {
-  //   fetch(`http://localhost:5000/myProduct/${user?.email}`)
+  //   fetch(`https://dream-bike-server-rose.vercel.app/myProduct/${user?.email}`)
   //     .then((res) => res.json())
   //     .then((data) => setMyProducts(data));
   // }, []);
 
-  const { data: myProducts = [], refetch, isLoading } = useQuery({
-    queryKey: ['appointmentOptions'],
+  const {
+    data: myProducts = [],
+    refetch,
+    isLoading,
+  } = useQuery({
+    queryKey: ["appointmentOptions"],
     queryFn: async () => {
-        const res = await fetch(`http://localhost:5000/myProduct/${user?.email}`);
-        const data = await res.json();
-        return data
-    }
+      const res = await fetch(`https://dream-bike-server-rose.vercel.app/myProduct/${user?.email}`);
+      const data = await res.json();
+      return data;
+    },
   });
 
   return (
