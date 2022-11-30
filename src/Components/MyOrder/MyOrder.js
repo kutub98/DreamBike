@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useEffect, useState } from "react";
-import { json } from "react-router-dom";
 import { authContext } from "../../Context/AuthContext/AuthContext";
+
+
 import SingleOrdeCmp from "./SingleOrderComponetnt/SingleOrdeCmp";
 
 const MyOrder = () => {
@@ -16,6 +17,7 @@ const MyOrder = () => {
     },
   });
 
+  console.log(ordered)
   return (
     <div>
       <div className="container p-2 mx-auto sm:p-4 text-gray-800">

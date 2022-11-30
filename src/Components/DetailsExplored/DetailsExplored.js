@@ -39,14 +39,14 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
-
     const price = form.price.value;
     const bikeName = form.bikeName.value;
     const location = form.location.value;
     const number = form.number.value;
 
     const orderByBookingInfo = {
-      
+      customerEmail: email,
+      customerName: name,
       priceFixed: price,
       bikeName: bikeName,
       receivedLocation: location,
