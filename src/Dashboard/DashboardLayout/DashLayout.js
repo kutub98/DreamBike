@@ -30,9 +30,17 @@ const DashLayout = () => {
         <div className="drawer-content">
           <Outlet></Outlet>
         </div>
-        <div className="drawer-side">
-          <label htmlFor="dashBoardDrawer" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-80 text-base-content">
+        
+        <div className="drawer-side border-r-2 border-b-gray-300 ">
+          
+          <label htmlFor="dashBoardDrawer" className="drawer-overlay "></label>
+          <div className=" w-24 my-2 mx-auto h-24 rounded-full bg-slate-300">
+            <div className="img">
+              <img src={user?.photoURL} alt="" />
+              <h1 className="mt-8">{user?.displayName}</h1>
+            </div>
+          </div>
+          <ul className="menu mb-32 bg-gray-100 p-4 w-56 text-base-content">
             <li className="text-gray-700 font-bold">
               <Link to="/DashBoard">
                 {" "}
