@@ -19,19 +19,13 @@ import { useNavigate } from "react-router-dom";
 
 const DetailsExplored = ({ detailsExplored, Already }) => {
   const { user } = useContext(authContext);
- 
-  
 
-  // console.log(user)
+  // user)
   const [close, setClose] = useState(true);
   const navigate = useNavigate();
-  
 
-  console.log(Already);
-  const { SellerName, bikeName, brandName, date, _id, image, location, marketPrice, resellPrice, used } =
+  const { sellerName, bikeName, brandName, date, _id, image, location, marketPrice, resellPrice, used } =
     detailsExplored;
-  console.log(detailsExplored);
-
 
   // handlingBooking for order
   const handlingBooking = (event) => {
@@ -54,10 +48,9 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
       productId: _id,
       productImag: image,
     };
-    console.log(orderByBookingInfo);
 
     //saving data for order in database
-    const url = "https://dream-bike-server-rose.vercel.app/booked";
+    const url = "http://localhost:5000/booked";
     fetch(url, {
       method: "POST",
       headers: {
@@ -75,11 +68,7 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
 
     setClose(false);
 
-
-
-    
-
-    // console.log("name", name,"email", email,"price", price,"bikeName", bikeName, "location", location, "number",number);
+    // "name", name,"email", email,"price", price,"bikeName", bikeName, "location", location, "number",number);
   };
 
   // alert for login
@@ -96,17 +85,11 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
   };
 
   // addedToWishList
-  
-
-
- 
 
   return (
     <div>
       <section className="dark:bg-gray-800 dark:text-gray-100">
         <div className="container mainBox flex flex-col-reverse mx-auto lg:flex-row relative">
-          
-
           <div className="flex flex-col px-6 py-8 space-y-6 rounded-sm sm:p-8 lg:p-12 lg:w-1/2 xl:w-2/5 dark:bg-violet-400 dark:text-gray-900">
             <div>
               <h1 className="flex items-center text-xl font-semibold">
@@ -136,7 +119,7 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
             </div>
             <div>
               <h1 className="flex items-center text-xl font-semibold">
-                <TbUserCircle className="mr-3 text-red-600 w-8 h-8" /> Seller :{SellerName}
+                <TbUserCircle className="mr-3 text-red-600 w-8 h-8" /> Seller :{sellerName}
               </h1>
             </div>
 
@@ -178,7 +161,7 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
                 <h1 className="text-2xl font-bold text-center"> Book For {bikeName}</h1>
                 <form onSubmit={handlingBooking} className="space-y-6 ng-untouched ng-pristine ng-valid">
                   <div className="space-y-1 text-sm">
-                    <label for="name" className="block dark:text-gray-400">
+                    <label forHtml="name" className="block dark:text-gray-400">
                       Name
                     </label>
                     <input
@@ -192,7 +175,7 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
                     />
                   </div>
                   <div className="space-y-1 text-sm">
-                    <label for="email" className="block dark:text-gray-400">
+                    <label forHtml="email" className="block dark:text-gray-400">
                       Email
                     </label>
                     <input
@@ -206,7 +189,7 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
                     />
                   </div>
                   <div className="space-y-1 text-sm">
-                    <label for="bikeName" className="block dark:text-gray-400">
+                    <label forHtml="bikeName" className="block dark:text-gray-400">
                       BikeName
                     </label>
                     <input
@@ -220,7 +203,7 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
                     />
                   </div>
                   <div className="space-y-1 text-sm">
-                    <label for="price" className="block dark:text-gray-400">
+                    <label forHtml="price" className="block dark:text-gray-400">
                       Fixed price
                     </label>
                     <input
@@ -234,7 +217,7 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
                     />
                   </div>
                   <div className="space-y-1 text-sm">
-                    <label for="location" className="block dark:text-gray-400">
+                    <label forHtml="location" className="block dark:text-gray-400">
                       Location
                     </label>
                     <input
@@ -249,7 +232,7 @@ const DetailsExplored = ({ detailsExplored, Already }) => {
                     />
                   </div>
                   <div className="space-y-1 text-sm">
-                    <label for="Number" className="block dark:text-gray-400">
+                    <label forHtml="Number" className="block dark:text-gray-400">
                       Mobile Number
                     </label>
                     <input

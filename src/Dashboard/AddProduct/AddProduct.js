@@ -15,7 +15,7 @@ const AddProduct = () => {
 
   const navigate = useNavigate();
   const addingProduct = (event) => {
-    const name = event.name;
+    const name = event.SellerName;
     const bikeName = event.bikeName;
     const email = event.email;
     const CategoryName = event.CategoryName;
@@ -26,7 +26,7 @@ const AddProduct = () => {
     const image = event.image;
     const used = event.used;
 
-    // console.log(name, CategoryName, bikeName, brandName, location, marketPrice, resellPrice, used, image);
+    console.log(name);
 
     const formData = new FormData();
     formData.append("image", event.image[0]);
@@ -38,7 +38,6 @@ const AddProduct = () => {
     })
       .then((data) => data.json())
       .then((result) => {
-        console.log(result.data.display_url);
         const image = result.data.display_url;
 
         //Posting a product to Allbikes collection
@@ -55,7 +54,7 @@ const AddProduct = () => {
           used: used,
         };
 
-        const url = "https://dream-bike-server-rose.vercel.app/allBikes";
+        const url = "http://localhost:5000/allBikes";
         fetch(url, {
           method: "POST",
           headers: {
@@ -65,7 +64,6 @@ const AddProduct = () => {
         })
           .then((data) => data.json())
           .then((res) => {
-            console.log(res);
             if (res.acknowledged) {
               toast.success("Successfully Product Add");
               navigate("/Dashboard/MyProduct");
@@ -86,7 +84,7 @@ const AddProduct = () => {
         <fieldset className=" dark:bg-gray-900">
           <div className=" grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-4">
             <div className="shadow-md">
-              <label for="SellerName" className="text-sm">
+              <label forHtml="SellerName" className="text-sm">
                 Seller Name
               </label>
               <input
@@ -101,7 +99,7 @@ const AddProduct = () => {
               />
             </div>
             <div className="shadow-md">
-              <label for="email" className="text-sm">
+              <label forHtml="email" className="text-sm">
                 Email
               </label>
               <input
@@ -116,7 +114,7 @@ const AddProduct = () => {
               />
             </div>
             <div className="shadow-md">
-              <label for="bikeName" className="text-sm">
+              <label forHtml="bikeName" className="text-sm">
                 Bike Name
               </label>
               <input
@@ -130,7 +128,7 @@ const AddProduct = () => {
               />
             </div>
             <div className="shadow-md">
-              <label for="brandName" className="text-sm">
+              <label forHtml="brandName" className="text-sm">
                 Brand Name
               </label>
               <input
@@ -178,7 +176,7 @@ const AddProduct = () => {
             </div>
 
             <div className="shadow-md">
-              <label for="marketPrice" className="text-sm">
+              <label forHtml="marketPrice" className="text-sm">
                 Market Price
               </label>
               <input
@@ -191,7 +189,7 @@ const AddProduct = () => {
               />
             </div>
             <div className="shadow-md">
-              <label for="resellPrice" className="text-sm">
+              <label forHtml="resellPrice" className="text-sm">
                 Resell Price
               </label>
               <input
@@ -204,7 +202,7 @@ const AddProduct = () => {
               />
             </div>
             <div className="shadow-md">
-              <label for="location" className="text-sm">
+              <label forHtml="location" className="text-sm">
                 location
               </label>
               <input
@@ -217,7 +215,7 @@ const AddProduct = () => {
               />
             </div>
             <div className=" shadow-md ">
-              <label for="used" className="text-sm">
+              <label forHtml="used" className="text-sm">
                 Product used for month/year
               </label>
               <input

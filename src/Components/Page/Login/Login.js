@@ -23,18 +23,17 @@ const Login = () => {
     navigate(from, { replace: true });
   }
 
-  // console.log(user);
+  // user);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const handleLogin = (e) => {
-    // console.log(e)
+    // e)
 
     loginWithEp(e.email, e.password)
       .then((res) => {
-        console.log(res.user);
         setLoading(true);
         toast.success("Welcome to Your Dream Bike");
         setCreateUserEmail(e.email);
@@ -51,9 +50,36 @@ const Login = () => {
   const googleHandler = () => {
     loginWithGoogle()
       .then((result) => {
-        console.log(result);
+        const userName = result.user.displayName;
+        const email = result.user.email;
+        const userImg = result.user.photoURL;
+        const userinfoFromGoogle = {
+          userName: userName,
+          email: email,
+          userImg: userImg,
+          signMethod: "google",
+          role: "Normal user",
+        };
+
+        fetch("http://localhost:5000/allUser", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userinfoFromGoogle),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            setLoading(true);
+
+            toast.success("Welcome to Your Dream Bike");
+            navigate(from, { replace: true });
+          })
+          .catch((error) => {
+            const errors = error.message;
+          });
+
         toast.success("Welcome to Your Dream Bike");
-        navigate(from, { replace: true });
       })
       .catch((error) => console.error(error));
   };
@@ -61,7 +87,6 @@ const Login = () => {
   const githubHandler = () => {
     loginWithGitHub()
       .then((result) => {
-        console.log(result);
         toast.success("Welcome to Your Dream Bike");
         navigate(from, { replace: true });
       })

@@ -25,8 +25,13 @@ const Register = () => {
     navigate(from, { replace: true });
   }
 
-  const { user, loginWithGitHub, loginWithGoogle, creatingUserWithEp, updatingUser, loading, setLoading } =useContext(authContext);
-  const {register,handleSubmit, formState: { errors },} = useForm();
+  const { user, loginWithGitHub, loginWithGoogle, creatingUserWithEp, updatingUser, loading, setLoading } =
+    useContext(authContext);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const handleCreatingUser = (e) => {
     const formData = new FormData();
@@ -40,7 +45,7 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => {
         const image = data.data.display_url;
-        console.log(image);
+
         // create User
 
         creatingUserWithEp(e.email, e.password)
@@ -62,10 +67,9 @@ const Register = () => {
                   role: e.role,
                   signMethod: "Register",
                 };
-                setCreateEmail(userInfo.email)
-                console.log(userInformation);
+                setCreateEmail(userInfo.email);
 
-                fetch("https://dream-bike-server-rose.vercel.app/allUser", {
+                fetch("http://localhost:5000/allUser", {
                   method: "POST",
                   headers: {
                     "content-type": "application/json",
@@ -74,20 +78,20 @@ const Register = () => {
                 })
                   .then((res) => res.json())
                   .then((data) => {
-                    // console.log(data)
-                    
+                    // data)
+
                     setLoading(false);
                   })
                   .catch((error) => {
                     const errors = error.message;
                   });
               })
-              
+
               .catch((error) => {
                 const errors = error.message;
               });
 
-            // fetch("https://dream-bike-server-rose.vercel.app/allUser", {
+            // fetch("http://localhost:5000/allUser", {
             //   method: "POST",
             //   headers: {
             //     "content-type": "application/json",
@@ -111,8 +115,8 @@ const Register = () => {
   // const signMethod = "Registration";
   // const SaveUsers = (email, userName) => {
   //   const saveUsers = { userName, email };
-  //   console.log(saveUsers);
-  //   fetch("https://dream-bike-server-rose.vercel.app/allUser", {
+  //   saveUsers);
+  //   fetch("http://localhost:5000/allUser", {
   //     method: "POST",
   //     headers: {
   //       "content-type": "application/json",
@@ -121,7 +125,7 @@ const Register = () => {
   //   })
   //     .then((res) => res.json())
   //     .then((data) => {
-  //       console.log("saveUser", data);
+  //       "saveUser", data);
   //       setLoading(true);
   //       setCreateEmail(email);
   //       // getUserToken(email)(66)
@@ -142,9 +146,8 @@ const Register = () => {
           signMethod: "google",
           role: "Normal user",
         };
-        console.log(result);
 
-        fetch("https://dream-bike-server-rose.vercel.app/allUser", {
+        fetch("http://localhost:5000/allUser", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -154,7 +157,7 @@ const Register = () => {
           .then((res) => res.json())
           .then((data) => {
             setLoading(true);
-            console.log(result);
+
             toast.success("Welcome to Your Dream Bike");
             navigate(from, { replace: true });
           })
@@ -170,7 +173,6 @@ const Register = () => {
   const githubHandler = () => {
     loginWithGitHub()
       .then((result) => {
-        console.log(result);
         toast.success("Welcome to Your Dream Bike");
         navigate(from, { replace: true });
       })

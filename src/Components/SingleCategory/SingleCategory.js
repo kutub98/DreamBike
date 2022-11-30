@@ -2,7 +2,7 @@ import React from 'react';
 
 const SingleCategory = ({singleProduct}) => {
    
-    console.log(singleProduct)
+    
     return (
         <div>
             

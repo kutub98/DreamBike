@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { FaLeaf } from "react-icons/fa";
 
-const SingleUser = ({ SingleUser }) => {
+const SingleUser = ({ SingleUser, refetch }) => {
   const { displayName, idx, _id, photoURL, role, email, signMethod } = SingleUser;
+  const [remainingUser, setRemainingUser] = useState(false)
 
-  console.log(SingleUser);
   const userDelete = () => {
     const agree = window.confirm(`are you sure want to delete ${displayName}`);
 
     if (agree) {
-      fetch(`https://dream-bike-server-rose.vercel.app/allUser/=${_id}`, {
+      fetch(`http://localhost:5000/allUser/${email}`, {
         method: "DELETE",
         headers: {
           authorization: ` bearer ${localStorage.getItem("bikerToken")}`,
@@ -17,8 +18,9 @@ const SingleUser = ({ SingleUser }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          if (data.modifiedCount > 0) {
+          if (data.deletedCount > 0) {
             toast.success(`Successfully delete ${displayName}`);
+            refetch()
           } else {
             toast.error("Sorry You are not authorized");
           }
@@ -43,9 +45,13 @@ const SingleUser = ({ SingleUser }) => {
       <td className="text-center">{role}</td>
       <th className="text-center">
         <button className="bg-red-600 p-3 rounded text-white">Pending</button>
-        <button onClick={userDelete} className="bg-black ml-1 p-3 rounded text-white">
+        {
+          role === 'admin' ? <button disabled onClick={userDelete} className="bg-gray-200 ml-1 p-3 rounded text-white">
+          Delete
+        </button> : <button onClick={userDelete} className="bg-black ml-1 p-3 rounded text-white">
           Delete
         </button>
+        }
       </th>
     </tr>
   );

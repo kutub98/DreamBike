@@ -19,7 +19,7 @@ const DashLayout = () => {
   const [isAdmin] = useAdmin(user?.email);
   const [isSeller] = useSeller(user?.email);
 
-  console.log(isAdmin, isSeller);
+ 
   
   return (
     <div className="">
@@ -35,8 +35,8 @@ const DashLayout = () => {
           
           <label htmlFor="dashBoardDrawer" className="drawer-overlay "></label>
           <div className=" w-24 my-2 mx-auto h-24 rounded-full bg-slate-300">
-            <div className="img">
-              <img src={user?.photoURL} alt="" />
+            <div className="img w-full h-full overflow-hidden">
+              <img src={user?.photoURL} alt="" className="img w-56 h-w-56 rounded-full overflow-hidden"/>
               <h1 className="mt-8">{user?.displayName}</h1>
             </div>
           </div>

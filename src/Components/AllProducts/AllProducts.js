@@ -5,7 +5,7 @@ const AllProducts = () => {
   const [allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
-    fetch("https://dream-bike-server-rose.vercel.app/allBikes")
+    fetch("http://localhost:5000/allBikes")
       .then((data) => data.json())
       .then((res) => setAllProducts(res));
   }, []);

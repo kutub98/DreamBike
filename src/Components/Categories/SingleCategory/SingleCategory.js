@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaArrowCircleDown,FaArrowCircleRight } from "react-icons/fa";
 const SingleCategory = ({category}) => {
     const {CategoryName, serviceId, image, _id} = category;
-    console.log(category)
+    
     return (
         
       <div className="">

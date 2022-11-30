@@ -6,11 +6,11 @@ import DetailsExplored from "../DetailsExplored/DetailsExplored";
 const MoreDetails = () => {
   const moreDetails = useLoaderData();
   const { user } = useContext(authContext);
-  // console.log(moreDetails)
+  // moreDetails)
   const [Already, setAlready] = useState();
 
   useEffect((email) => {
-    fetch(`https://dream-bike-server-rose.vercel.app/ordered/${user?.email}`)
+    fetch(`http://localhost:5000/ordered/${user?.email}`)
       .then((data) => data.json())
       .then((res) => setAlready(res));
   }, []);

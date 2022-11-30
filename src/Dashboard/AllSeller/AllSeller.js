@@ -4,11 +4,11 @@ import SingleSeller from "./SingleSeller";
 const AllSeller = () => {
   const [seller, setSeller] = useState([]);
   useEffect((id) => {
-    fetch("https://dream-bike-server-rose.vercel.app/seller/Seller")
+    fetch("http://localhost:5000/seller/Seller")
       .then((res) => res.json())
       .then((data) => setSeller(data));
   }, []);
-  console.log(seller);
+
   return (
     <div>
       <h1 className="text-center font-extrabold text-3xl my-3 text-black">All Sellers</h1>

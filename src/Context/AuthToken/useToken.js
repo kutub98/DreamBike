@@ -4,9 +4,8 @@ const useToken = (email) => {
   const [token, setToken] = useState("");
 
   useEffect(() => {
-    console.log(email, "token");
     if (email) {
-      fetch(`https://dream-bike-server-rose.vercel.app/jwt?email=${email}`)
+      fetch(`http://localhost:5000/jwt?email=${email}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.bikerToken) {

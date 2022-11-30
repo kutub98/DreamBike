@@ -4,11 +4,10 @@ import SingleBuyers from "./SingleBuyers";
 const AllBuyers = () => {
   const [buyers, setSeller] = useState([]);
   useEffect((id) => {
-    fetch(" https://dream-bike-server-rose.vercel.app/buyer/Buyer/")
+    fetch(" http://localhost:5000/buyer/Buyer/")
       .then((res) => res.json())
       .then((data) => setSeller(data));
   }, []);
-  console.log(buyers);
 
   return (
     <div>

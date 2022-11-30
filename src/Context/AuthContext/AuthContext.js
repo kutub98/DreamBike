@@ -8,7 +8,7 @@ const AuthContext = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading]= useState(false)
 
-  console.log(user)
+  
 
 
   //Crating user with email and password

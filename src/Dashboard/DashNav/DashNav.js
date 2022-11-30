@@ -16,11 +16,11 @@ const DashNav = () => {
   const [isSeller] = useSeller(user?.email);
   const navigate = useNavigate()
 
-  // console.log(user)
+  // user)
   const signOut = () => {
     logout()
       .then(() => {})
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
       navigate('/login')
   };
 

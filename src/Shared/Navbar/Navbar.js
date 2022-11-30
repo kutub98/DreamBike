@@ -15,11 +15,11 @@ const Navbar = () => {
   const [openDashBoard, setOpenDashboard] = useState(false);
   const { user, LogOut, logout } = useContext(authContext);
   
-// console.log(user)
+// user)
   const LogOUT =()=>{
     logout()
     .then(()=>{})
-    .catch(error=>console.log(error))
+    .catch(error=> console.error(error))
   }
   
   const dashboardMenu = (
@@ -77,7 +77,7 @@ const Navbar = () => {
               <div className="w-8 p-1  rounded-full border-2 border-white ">
                 <img src={user?.uid ? user?.photoURL : ''} alt="kutub" />
                 {openDashBoard ? <ul className="dashBoard">{dashboardMenu}</ul> : null}
-                {/* {console.log(openDashBoard)} */}
+                {/* {openDashBoard)} */}
               </div>
             </div>
             {/* </Link> */}

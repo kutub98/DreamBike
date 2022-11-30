@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useEffect, useState } from "react";
 import { authContext } from "../../Context/AuthContext/AuthContext";
 
-
 import SingleOrdeCmp from "./SingleOrderComponetnt/SingleOrdeCmp";
 
 const MyOrder = () => {
@@ -11,13 +10,12 @@ const MyOrder = () => {
   const { data: ordered = [], isLoading } = useQuery({
     queryKey: ["orderd", user?.email],
     queryFn: async () => {
-      const res = await fetch(`https://dream-bike-server-rose.vercel.app/ordered/${user?.email}`);
+      const res = await fetch(`http://localhost:5000/ordered/${user?.email}`);
       const data = await res.json();
       return data;
     },
   });
 
-  console.log(ordered)
   return (
     <div>
       <div className="container p-2 mx-auto sm:p-4 text-gray-800">

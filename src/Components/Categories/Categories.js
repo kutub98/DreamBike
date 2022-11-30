@@ -7,11 +7,11 @@ const Categories = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("https://dream-bike-server-rose.vercel.app/allCategories")
+    fetch("http://localhost:5000/allCategories")
       .then((data) => data.json())
       .then((res) => setCategories(res));
   }, []);
-  console.log(categories);
+
   return (
     <div className=" px-[10%] py-14 bg-slate-100 ">
       <div className="text-center">

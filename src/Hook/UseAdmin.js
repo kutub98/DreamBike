@@ -7,10 +7,10 @@ const useAdmin = email => {
 
     useEffect(() => {
         if (email) {
-            fetch(`https://dream-bike-server-rose.vercel.app/alluser/admin/${email}`)
+            fetch(`http://localhost:5000/alluser/admin/${email}`)
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+                    
                     setIsAdmin(data.isAdmin);
                     setIsAdminLoading(false);
                 })

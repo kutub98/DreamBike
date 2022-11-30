@@ -4,7 +4,7 @@ const SingleSeller = ({SSeller}) => {
     const { displayName, idx, _id,  photoURL, role, email, signMethod } = SSeller;
 
     const verifySeller = () =>{
-        console.log('hello')
+      
     }
     return (
         <tr>

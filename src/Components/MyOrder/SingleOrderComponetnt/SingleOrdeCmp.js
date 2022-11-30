@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SingleOrdeCmp = ({singOrder , refetch}) => {
-    console.log(singOrder)
+   
     const {bikeName, customerEmail,customerName,productImag, idx, customerNumber, priceFixed , receivedLocation , _id} = singOrder 
     let serialNumber = 0
     return (

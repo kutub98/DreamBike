@@ -1,16 +1,26 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useEffect, useState } from "react";
 import { authContext } from "../../Context/AuthContext/AuthContext";
 import MySingleProduct from "./MySingleProduct/MySingleProduct";
 
 const MyProduct = () => {
   const { user } = useContext(authContext);
-  const [myProducts, setMyProducts] = useState([]);
+  // const [myProducts, setMyProducts] = useState([]);
 
-  useEffect(() => {
-    fetch(`https://dream-bike-server-rose.vercel.app/myProduct/${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => setMyProducts(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/myProduct/${user?.email}`)
+  //     .then((res) => res.json())
+  //     .then((data) => setMyProducts(data));
+  // }, []);
+
+  const { data: myProducts = [], refetch, isLoading } = useQuery({
+    queryKey: ['appointmentOptions'],
+    queryFn: async () => {
+        const res = await fetch(`http://localhost:5000/myProduct/${user?.email}`);
+        const data = await res.json();
+        return data
+    }
+  });
 
   return (
     <div>
@@ -29,7 +39,7 @@ const MyProduct = () => {
           </thead>
           <tbody>
             {myProducts.map((mPrd) => (
-              <MySingleProduct key={mPrd._Id} mySinglePrd={mPrd}></MySingleProduct>
+              <MySingleProduct key={mPrd._Id} mySinglePrd={mPrd} refetch={refetch}></MySingleProduct>
             ))}
           </tbody>
         </table>
