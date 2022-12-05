@@ -30,7 +30,7 @@ const ReportedItems = () => {
               <th className="text-center">Product ID</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody> 
             {reported.map((report, idx) => (
               <SingleReport key={report._id} report={report} idx={idx + 1} refetch={refetch}></SingleReport>
             ))}
